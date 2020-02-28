@@ -1,7 +1,11 @@
-// custom typefaces
-import 'typeface-montserrat'
-import 'typeface-merriweather'
+// CSS
+import "normalize.css";
 
-import { wrapRootElement as wrap } from './wrap-root-element'
+// Custom typefaces
+import "typeface-lato";
+import "typeface-lora";
 
-export const wrapRootElement = wrap
+// App wrapper
+import App from "./src/app";
+
+export const wrapRootElement = App;

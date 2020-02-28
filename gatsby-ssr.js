@@ -1,3 +1,4 @@
-import { wrapRootElement as wrap } from './wrap-root-element'
+// App wrapper
+import App from "./src/app";
 
-export const wrapRootElement = wrap
+export const wrapRootElement = App;

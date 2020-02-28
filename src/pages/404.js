@@ -1,18 +1,25 @@
-import React from 'react'
+import React from "react";
+import { Link } from "gatsby";
 
-import Layout from '../components/Layout'
-import SEO from '../components/seo'
+// Components
+import SEO from "../components/seo";
+import Container from "../components/container";
+import PageHeader from "../components/page-header";
 
-class NotFoundPage extends React.Component {
-  render() {
-    return (
-      <Layout location={this.props.location}>
-        <SEO title="404: Not Found" />
-        <h1>Not Found</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      </Layout>
-    )
-  }
-}
+const NotFound = () => {
+  return (
+    <>
+      <SEO title="404 Not Found" />
+      <Container>
+        <PageHeader />
+        <h1>404</h1>
+        <p>
+          Sorry, that page does not seem to exist!{" "}
+          <Link href="/">Go to the home page</Link>.
+        </p>
+      </Container>
+    </>
+  );
+};
 
-export default NotFoundPage
+export default NotFound;

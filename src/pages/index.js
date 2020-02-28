@@ -1,69 +1,71 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
+import PropTypes from "prop-types";
+import React from "react";
+import { graphql } from "gatsby";
+import styled from "@emotion/styled";
 
-import Bio from '../components/Bio'
-import Layout from '../components/Layout'
-import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
+// Components
+import Container from "../components/container";
+import SEO from "../components/seo";
+import Bio from "../components/bio";
+import DarkModeToggle from "../components/dark-mode-toggle";
+import Post from "../components/post";
 
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMdx.edges
+const ToggleWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.6rem;
+`;
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
+const Home = ({ data }) => {
+  const posts = data.allMdx.edges;
+
+  return (
+    <>
+      <SEO title="Home" />
+      <Container>
+        <ToggleWrapper>
+          <DarkModeToggle />
+        </ToggleWrapper>
+
         <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          )
-        })}
-      </Layout>
-    )
-  }
-}
 
-export default BlogIndex
+        {posts.map(({ node }) => (
+          <Post post={node} />
+        ))}
+      </Container>
+    </>
+  );
+};
 
-export const pageQuery = graphql`
+Home.propTypes = {
+  data: PropTypes.shape({
+    allMdx: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({ node: PropTypes.object.isRequired })
+      ).isRequired
+    }).isRequired
+  }).isRequired
+};
+
+export const homeQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 190)
           fields {
             slug
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            tagline
+            tags
           }
         }
       }
     }
   }
-`
+`;
+
+export default Home;
