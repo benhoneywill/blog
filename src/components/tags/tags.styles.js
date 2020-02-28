@@ -3,12 +3,14 @@ import { css } from "@emotion/core";
 import { Link } from "gatsby";
 
 export const List = styled.div`
-  display: flex;
-  margin: -0.8rem 0;
+  ${({ theme }) => css`
+    display: flex;
+    margin: -${theme.baseLineHeight / 2}rem 0;
+  `}
 `;
 
 export const Tag = styled(Link)`
-  ${({ darkMode }) => css`
+  ${({ theme, darkMode }) => css`
     text-decoration: none;
     background-color: ${darkMode
       ? "rgba(255, 255, 255, 0.1)"
@@ -17,7 +19,7 @@ export const Tag = styled(Link)`
     display: inline-flex;
     align-items: center;
     padding: 0 15px;
-    height: 1.6rem;
+    height: ${theme.baseLineHeight}rem;
     border-radius: 4px;
     font-size: 0.75rem;
     margin-right: 10px;

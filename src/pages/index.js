@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { graphql } from "gatsby";
 import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 
 // Components
 import Container from "../components/container";
@@ -11,9 +12,11 @@ import DarkModeToggle from "../components/dark-mode-toggle";
 import Post from "../components/post";
 
 const ToggleWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1.6rem;
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: ${theme.baseLineHeight}rem;
+  `}
 `;
 
 const Home = ({ data }) => {

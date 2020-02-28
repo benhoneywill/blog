@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 
 export const ImageWrapper = styled.div`
   border-radius: 50%;
@@ -14,12 +15,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Inner = styled.div`
-  margin-left: 1.6rem;
+  ${({ theme }) => css`
+    margin-left: ${theme.baseLineHeight}rem;
+  `}
 `;
 
 export const Text = styled.p`
-  margin-top: 0;
-  margin-bottom: 0.8rem;
+  ${({ theme }) => css`
+    margin-top: 0;
+    margin-bottom: ${theme.baseLineHeight / 2}rem;
+  `}
 `;
 
 export const SocialIcons = styled.ul`
