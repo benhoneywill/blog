@@ -1,3 +1,3 @@
-# benhoneywill.com
+# Blog
 
-My personal web develop blog ([benhoneywill.com](https://benhoneywill.com)) built with Gatsby.
+My personal web development blog, [benhoneywill.com](https://benhoneywill.com). Built with Gatsby.

@@ -36,7 +36,7 @@ const colorThemes = {
 
 export const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = React.useState(
-    JSON.parse(window.localStorage.getItem("darkMode"))
+    JSON.parse(window ? window.localStorage.getItem("darkMode") : "true")
   );
 
   React.useEffect(() => {
