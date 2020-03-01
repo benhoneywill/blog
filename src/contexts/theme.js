@@ -35,8 +35,10 @@ const colorThemes = {
 };
 
 export const ThemeProvider = ({ children }) => {
+  const isBrowser = typeof window !== "undefined";
+
   const [darkMode, setDarkMode] = React.useState(
-    JSON.parse(window ? window.localStorage.getItem("darkMode") : "true")
+    JSON.parse(isBrowser ? window.localStorage.getItem("darkMode") : "true")
   );
 
   React.useEffect(() => {
