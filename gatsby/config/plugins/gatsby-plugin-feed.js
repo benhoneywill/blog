@@ -16,11 +16,12 @@ const blogPostQuery = `{
     edges {
       node {
         body
+        excerpt(pruneLength: 190)
         fields { slug }
         frontmatter {
           title
-          tagline
           date
+          external_link
         }
       }
     }
@@ -31,9 +32,11 @@ const serialize = ({ query }) => {
   const { site, allMdx } = query;
 
   return allMdx.edges.map(({ node }) => ({
-    description: node.frontmatter.tagline,
+    description: node.excerpt,
     data: node.frontmatter.date,
-    url: site.siteMetadata.siteUrl + node.fields.slug,
+    url:
+      node.frontmatter.external_link ||
+      site.siteMetadata.siteUrl + node.fields.slug,
     guid: site.siteMetadata.siteUrl + node.fields.slug,
     custom_elements: [{ "content:encoded": node.body }]
   }));

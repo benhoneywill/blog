@@ -5,7 +5,10 @@ const blogPostsQuery = `{
     edges {
       node {
         id
-        frontmatter { tags }
+        frontmatter {
+          tags
+          external_link
+        }
         fields { slug }
       }
     }
@@ -33,13 +36,15 @@ module.exports = async ({ graphql, actions }) => {
   }
 
   postsData.data.allMdx.edges.forEach(post => {
-    createPage({
-      path: post.node.fields.slug,
-      component: path.resolve("src/templates/blog-post.js"),
-      context: {
-        slug: post.node.fields.slug
-      }
-    });
+    if (!post.node.frontmatter.external_link) {
+      createPage({
+        path: post.node.fields.slug,
+        component: path.resolve("src/templates/blog-post.js"),
+        context: {
+          slug: post.node.fields.slug
+        }
+      });
+    }
   });
 
   tagsData.data.tagsGroup.group.forEach(tag => {

@@ -52,8 +52,8 @@ export const tagQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            tagline
             tags
+            external_link
           }
         }
       }
