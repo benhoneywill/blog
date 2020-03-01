@@ -38,13 +38,13 @@ export const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = React.useState(true);
 
   React.useEffect(() => {
-    window.localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [darkMode]);
-
-  React.useEffect(() => {
     const initialDarkMode = window.localStorage.getItem("darkMode");
     if (initialDarkMode === "false") setDarkMode(false);
   }, []);
+
+  React.useEffect(() => {
+    window.localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
 
   const colors = darkMode ? colorThemes.dark : colorThemes.light;
   const theme = { ...themeDefaults, colors };
