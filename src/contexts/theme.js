@@ -35,7 +35,7 @@ const colorThemes = {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = React.useState(true);
+  const [darkMode, setDarkMode] = React.useState(false);
 
   const colors = darkMode ? colorThemes.dark : colorThemes.light;
   const theme = { ...themeDefaults, colors };

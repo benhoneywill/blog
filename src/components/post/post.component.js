@@ -22,17 +22,15 @@ const Post = ({ post }) => {
       <PublishedAt>
         Posted on <time>{post.frontmatter.date}</time>
       </PublishedAt>
-
       <Tags tags={post.frontmatter.tags} />
 
-      <p>{post.excerpt}</p>
+      <p>{post.frontmatter.tagline}</p>
     </div>
   );
 };
 
 Post.propTypes = {
   post: PropTypes.shape({
-    excerpt: PropTypes.string.isRequired,
     fields: PropTypes.shape({
       slug: PropTypes.string.isRequired
     }).isRequired,
@@ -40,7 +38,8 @@ Post.propTypes = {
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
       title: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
-      external_link: PropTypes.string
+      external_link: PropTypes.string,
+      tagline: PropTypes.string.isRequired
     }).isRequired
   }).isRequired
 };

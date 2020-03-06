@@ -2,10 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
+// Contexts
+import { useTheme } from "../../contexts/theme";
+
 // Queries
 import { useSeoQuery } from "./seo.queries";
 
 const SEO = ({ description, lang, meta, keywords, title }) => {
+  const { darkMode } = useTheme();
   const siteMetadata = useSeoQuery();
   const metaDescription = description || siteMetadata.description;
 
@@ -16,40 +20,44 @@ const SEO = ({ description, lang, meta, keywords, title }) => {
       titleTemplate={`%s | ${siteMetadata.title}`}
       meta={[
         {
-          name: `description`,
+          name: "description",
           content: metaDescription
         },
         {
-          property: `og:title`,
+          property: "og:title",
           content: title
         },
         {
-          property: `og:description`,
+          property: "og:description",
           content: metaDescription
         },
         {
-          property: `og:type`,
-          content: `website`
+          property: "og:type",
+          content: "website"
         },
         {
-          name: `twitter:card`,
-          content: `summary`
+          name: "twitter:card",
+          content: "summary"
         },
         {
-          name: `twitter:creator`,
+          name: "twitter:creator",
           content: siteMetadata.author
         },
         {
-          name: `twitter:title`,
+          name: "twitter:title",
           content: title
         },
         {
-          name: `twitter:description`,
+          name: "twitter:description",
           content: metaDescription
         },
         {
-          name: `keywords`,
-          content: keywords.concat(title).join(`, `)
+          name: "keywords",
+          content: keywords.concat(title).join(", ")
+        },
+        {
+          name: "theme-color",
+          content: darkMode ? "#191b1f" : "#1E90FF"
         }
       ].concat(meta)}
     />

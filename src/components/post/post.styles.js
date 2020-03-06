@@ -9,7 +9,7 @@ export const PublishedAt = styled.p`
   `}
 `;
 
-export const PostTitle = styled.h3`
+export const PostTitle = styled.h5`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
     a {

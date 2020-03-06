@@ -16,8 +16,12 @@ const makeStyles = theme => css`
     font-size: ${theme.baseFontSize}px;
     line-height: ${theme.baseLineHeight};
 
-    @media (max-width: 700px) {
+    @media (max-width: 750px) {
       font-size: ${theme.baseFontSize - 2}px;
+    }
+
+    @media (max-width: 600px) {
+      font-size: ${theme.baseFontSize - 3}px;
     }
   }
 
@@ -55,6 +59,10 @@ const makeStyles = theme => css`
 
   h1 {
     font-size: ${(theme.baseLineHeight * 3) / theme.headerLineHeight}rem;
+
+    @media (max-width: 600px) {
+      font-size: ${(theme.baseLineHeight * 2) / theme.headerLineHeight}rem;
+    }
   }
 
   h2 {

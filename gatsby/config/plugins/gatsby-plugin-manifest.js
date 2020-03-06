@@ -7,6 +7,7 @@ module.exports = {
     background_color: "#191b1f",
     theme_color: "#00aced",
     display: "minimal-ui",
-    icon: "content/assets/technologist.png"
+    icon: "content/assets/technologist.png",
+    theme_color_in_head: false
   }
 };

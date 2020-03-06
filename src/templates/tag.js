@@ -17,7 +17,7 @@ const TagTemplate = ({ data, pageContext }) => {
 
       <Container>
         <PageHeader />
-        <h1>{pageContext.slug}</h1>
+        <h3 style={{ textAlign: "center" }}>{pageContext.slug}</h3>
         {posts.map(({ node }) => (
           <Post post={node} />
         ))}
@@ -45,7 +45,6 @@ export const tagQuery = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 190)
           fields {
             slug
           }
@@ -54,6 +53,7 @@ export const tagQuery = graphql`
             title
             tags
             external_link
+            tagline
           }
         }
       }

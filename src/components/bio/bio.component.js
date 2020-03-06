@@ -18,7 +18,6 @@ import { useBioQuery } from "./bio.queries";
 import {
   ImageWrapper,
   Wrapper,
-  Inner,
   Text,
   SocialIcons,
   SocialIconItem,
@@ -38,7 +37,7 @@ const Bio = () => {
         </Link>
       </ImageWrapper>
 
-      <Inner>
+      <div>
         <Text>
           Written by <strong>Ben Honeywill</strong>, a UK based front-end
           Engineer at{" "}
@@ -80,7 +79,7 @@ const Bio = () => {
             </SocialIconItem>
           ))}
         </SocialIcons>
-      </Inner>
+      </div>
     </Wrapper>
   );
 };

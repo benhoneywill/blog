@@ -15,7 +15,7 @@ const ToggleWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: flex-end;
-    margin-bottom: ${theme.baseLineHeight}rem;
+    margin-bottom: ${theme.baseLineHeight * 2}rem;
   `}
 `;
 
@@ -29,9 +29,7 @@ const Home = ({ data }) => {
         <ToggleWrapper>
           <DarkModeToggle />
         </ToggleWrapper>
-
         <Bio />
-
         {posts.map(({ node }) => (
           <Post post={node} />
         ))}
@@ -55,7 +53,6 @@ export const homeQuery = graphql`
     allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt(pruneLength: 190)
           fields {
             slug
           }
@@ -64,6 +61,7 @@ export const homeQuery = graphql`
             title
             tags
             external_link
+            tagline
           }
         }
       }
