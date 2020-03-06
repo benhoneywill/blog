@@ -17,7 +17,7 @@ const TagTemplate = ({ data, pageContext }) => {
 
       <Container>
         <PageHeader />
-        <h3 style={{ textAlign: "center" }}>{pageContext.slug}</h3>
+        <h3>{pageContext.slug}</h3>
         {posts.map(({ node }) => (
           <Post post={node} />
         ))}
