@@ -3,12 +3,20 @@ import { css } from "@emotion/core";
 
 export const ImageWrapper = styled.div`
   ${({ theme }) => css`
+    position: relative;
     border-radius: 50%;
     overflow: hidden;
     width: 4.8rem;
     height: 4.8rem;
     flex-shrink: 0;
     margin-bottom: ${theme.baseLineHeight / 2}rem;
+
+    .gatsby-image-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
     @media (min-width: 600px) {
       margin-right: ${theme.baseLineHeight}rem;
@@ -60,4 +68,9 @@ export const SocialIconItem = styled.li`
 export const SocialIconLink = styled.a`
   display: inline-flex;
   align-items: center;
+  transition: opacity 0.1s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;

@@ -39,9 +39,8 @@ const Bio = () => {
 
       <div>
         <Text>
-          Written by <strong>Ben Honeywill</strong>, a UK based front-end
-          Engineer at{" "}
-          <a href="https://twitter.com/lushengineering">@LushEngineering</a>.
+          Written by <strong>Ben Honeywill</strong>, a UK based Front-End
+          Engineer with <a href="https://twitter.com/LushLtd">@LushLtd</a>.
           Teacher, learner and lover of JavaScript.
         </Text>
 

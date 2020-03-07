@@ -15,7 +15,7 @@ export const Button = styled.button`
     display: flex;
     align-items: center;
     justify-content: ${darkMode ? "flex-end" : "flex-start"};
-    transition: background 0.2s ease-out;
+    transition: background 0.2s ease-out, opacity 0.1s ease-in-out;
 
     &:after {
       content: "";
@@ -35,6 +35,10 @@ export const Button = styled.button`
       &:after {
         box-shadow: inset 0px 0px 0px 2px ${theme.colors.primary};
       }
+    }
+
+    &:hover {
+      opacity: 0.8;
     }
 
     svg {

@@ -28,7 +28,7 @@ export const Tag = styled(Link)`
     transition: opacity 0.1s ease-in-out;
 
     &:hover {
-      opacity: 0.7;
+      opacity: 0.8;
     }
   `}
 `;
