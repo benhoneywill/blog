@@ -3,9 +3,9 @@ import { css } from "@emotion/core";
 import { Link } from "gatsby";
 
 export const List = styled.div`
-  ${({ theme }) => css`
+  ${({ margin, theme }) => css`
     display: flex;
-    margin: -${theme.baseLineHeight / 2}rem 0;
+    margin: ${margin * theme.baseLineHeight}rem 0;
   `}
 `;
 
@@ -23,7 +23,7 @@ export const Tag = styled(Link)`
     border-radius: 4px;
     font-size: 0.75rem;
     margin-right: 10px;
-    font-family: "Lato", sans-serif;
+    font-family: ${theme.fonts.sansSerif};
     font-weight: bold;
     transition: opacity 0.1s ease-in-out;
 

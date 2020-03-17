@@ -1,31 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
 
 // Styles
-import { PublishedAt, PostTitle } from "./post.styles";
+import {
+  PublishedAt,
+  PostTitle,
+  Wrapper,
+  ContentWrapper,
+  Tagline,
+  PostImage
+} from "./post.styles";
 
 // Components
 import Tags from "../tags";
+import PostLink from "./post.link";
 
 const Post = ({ post }) => {
   return (
-    <div key={post.fields.slug}>
-      <PostTitle>
-        {post.frontmatter.external_link ? (
-          <a href={post.frontmatter.external_link}>{post.frontmatter.title}</a>
-        ) : (
-          <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
-        )}
-      </PostTitle>
+    <Wrapper>
+      <PostLink post={post}>
+        <PostImage fluid={post.frontmatter.image.childImageSharp.fluid} />
+      </PostLink>
 
-      <PublishedAt>
-        Posted on <time>{post.frontmatter.date}</time>
-      </PublishedAt>
-      <Tags tags={post.frontmatter.tags} />
+      <ContentWrapper>
+        <PostTitle>
+          <PostLink post={post}>{post.frontmatter.title}</PostLink>
+        </PostTitle>
 
-      <p>{post.frontmatter.tagline}</p>
-    </div>
+        <PublishedAt>
+          Posted on <time>{post.frontmatter.date}</time>
+        </PublishedAt>
+        <Tags tags={post.frontmatter.tags} />
+
+        <Tagline>{post.frontmatter.tagline}</Tagline>
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 
@@ -39,7 +48,12 @@ Post.propTypes = {
       title: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       external_link: PropTypes.string,
-      tagline: PropTypes.string.isRequired
+      tagline: PropTypes.string.isRequired,
+      image: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          fluid: PropTypes.object.isRequired
+        }).isRequired
+      }).isRequired
     }).isRequired
   }).isRequired
 };

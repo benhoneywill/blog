@@ -3,31 +3,38 @@ import React from "react";
 import { graphql } from "gatsby";
 
 // Components
-import SEO from "../components/seo";
-import Container from "../components/container";
 import Article from "../components/article";
-import PageHeader from "../components/page-header";
+import Layout from "../components/layout";
+import Hero from "../components/hero";
 
-const BlogPostTemplate = ({ data }) => {
+const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx;
 
   return (
-    <>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
-      <Container>
-        <PageHeader />
-        <Article post={post} />
-      </Container>
-    </>
+    <Layout
+      title={post.frontmatter.title}
+      description={post.excerpt}
+      location={location}
+      image={post.frontmatter.image.childImageSharp.fluid.src}
+    >
+      <Hero title={post.frontmatter.title} />
+      <Article post={post} />
+    </Layout>
   );
 };
 
 BlogPostTemplate.propTypes = {
+  location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       excerpt: PropTypes.string.isRequired,
       frontmatter: PropTypes.shape({
-        title: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired,
+        image: PropTypes.shape({
+          childImageSharp: PropTypes.shape({
+            fluid: PropTypes.object.isRequired
+          }).isRequired
+        }).isRequired
       }).isRequired
     }).isRequired
   }).isRequired
@@ -41,6 +48,13 @@ export const blogPostQuery = graphql`
         title
         tags
         date(formatString: "MMMM Do, YYYY")
+        image {
+          childImageSharp {
+            fluid(maxWidth: 700) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       fields {
         slug

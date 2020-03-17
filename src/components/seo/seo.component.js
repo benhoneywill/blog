@@ -8,10 +8,13 @@ import { useTheme } from "../../contexts/theme";
 // Queries
 import { useSeoQuery } from "./seo.queries";
 
-const SEO = ({ description, lang, meta, keywords, title }) => {
+const SEO = ({ description, lang, meta, keywords, title, image }) => {
   const { darkMode } = useTheme();
-  const siteMetadata = useSeoQuery();
+  const { siteMetadata, defaultImage } = useSeoQuery();
   const metaDescription = description || siteMetadata.description;
+
+  const imgPath = image || defaultImage.childImageSharp.fixed.src;
+  const imgSrc = `${siteMetadata.siteUrl}${imgPath}`;
 
   return (
     <Helmet
@@ -32,12 +35,20 @@ const SEO = ({ description, lang, meta, keywords, title }) => {
           content: metaDescription
         },
         {
+          property: "og:image",
+          content: imgSrc
+        },
+        {
           property: "og:type",
           content: "website"
         },
         {
           name: "twitter:card",
           content: "summary"
+        },
+        {
+          name: "twitter:image",
+          content: imgSrc
         },
         {
           name: "twitter:creator",
@@ -68,7 +79,8 @@ SEO.defaultProps = {
   lang: "en",
   meta: [],
   keywords: [],
-  description: null
+  description: null,
+  image: null
 };
 
 SEO.propTypes = {
@@ -76,7 +88,8 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string
 };
 
 export default SEO;

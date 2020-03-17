@@ -3,7 +3,7 @@ module.exports = {
   author: "Ben Honeywill",
   description:
     "I am Ben Honeywill, a Frontend Web Developer from Bournemouth, UK.",
-  siteUrl: "https://benhoneywill.com/",
+  siteUrl: "https://benhoneywill.com",
   social: {
     twitter: "benhoneywill",
     github: "benhoneywill",

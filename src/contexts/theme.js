@@ -11,31 +11,39 @@ export const useTheme = () => {
 const themeDefaults = {
   baseFontSize: 20,
   baseLineHeight: 1.6,
-  headerLineHeight: 1.2
+  headerLineHeight: 1.2,
+  fonts: {
+    serif: `"Lora", Constantia, ‘Lucida Bright’, Lucidabright, ‘Lucida Serif’, Lucida, ‘DejaVu Serif’, ‘Bitstream Vera Serif’, ‘Liberation Serif’, Georgia, serif`,
+    sansSerif: `"lato",Frutiger, ‘Frutiger Linotype’, Univers, Calibri, ‘Gill Sans’, ‘Gill Sans MT’, ‘Myriad Pro’, Myriad, ‘DejaVu Sans Condensed’, ‘Liberation Sans’, ‘Nimbus Sans L’, Tahoma, Geneva, ‘Helvetica Neue’, Helvetica, Arial, sans-serif`
+  }
 };
 
 const colorThemes = {
   light: {
     background: "#fefefe",
+    light: "#f1f1f1",
     text: "#333333",
     lightText: "#555555",
     heading: "#111111",
     primary: "#1E90FF",
-    border: "rgba(0, 0, 0, 0.2)"
+    border: "rgba(0, 0, 0, 0.1)",
+    code: "#f5f5f5"
   },
 
   dark: {
     background: "#191b1f",
+    light: "#08090a",
     text: "#C4C6C7",
     lightText: "#949697",
     heading: "#fefefe",
     primary: "#00aced",
-    border: "rgba(255, 255, 255, 0.2)"
+    border: "rgba(255, 255, 255, 0.1)",
+    code: "#212329"
   }
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [darkMode, setDarkMode] = React.useState(true);
 
   const colors = darkMode ? colorThemes.dark : colorThemes.light;
   const theme = { ...themeDefaults, colors };

@@ -6,18 +6,18 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import { useTheme } from "../../contexts/theme";
 
 // Themes
-import { darkTheme, lightTheme } from "./code.themes";
+import { getCodeTheme } from "./code.config";
 
 const Code = ({ codeString, language }) => {
-  const { darkMode } = useTheme();
-  const theme = darkMode ? darkTheme : lightTheme;
+  const { darkMode, theme } = useTheme();
+  const codeTheme = getCodeTheme({ theme, darkMode });
 
   return (
     <Highlight
       {...defaultProps}
       code={codeString}
       language={language}
-      theme={theme}
+      theme={codeTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={style}>

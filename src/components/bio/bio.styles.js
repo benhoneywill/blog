@@ -17,22 +17,16 @@ export const ImageWrapper = styled.div`
       left: 50%;
       transform: translate(-50%, -50%);
     }
-
-    @media (min-width: 600px) {
-      margin-right: ${theme.baseLineHeight}rem;
-    }
   `}
 `;
 
 export const Wrapper = styled.div`
   display: flex;
-  margin-bottom: 4rem;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+  margin: auto;
+  max-width: 700px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 `;
 
 export const Text = styled.p`
@@ -48,21 +42,13 @@ export const SocialIcons = styled.ul`
   padding: 0;
   display: flex;
   align-items: center;
-
-  @media (max-width: 600px) {
-    justify-content: center;
-  }
+  justify-content: center;
 `;
 
 export const SocialIconItem = styled.li`
   display: flex;
   align-items: center;
-  margin: 0.2rem 1rem 0.2rem 0;
-
-  @media (max-width: 600px) {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
+  margin: 0.2rem 0.5rem;
 `;
 
 export const SocialIconLink = styled.a`

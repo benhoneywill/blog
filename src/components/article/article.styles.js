@@ -10,8 +10,11 @@ export const ArticleWrapper = styled.article`
 `;
 
 export const PublishedAt = styled.p`
-  color: #777;
-  font-family: "Lato", sans-serif;
+  ${({ theme }) => css`
+    color: #777;
+    font-family: ${theme.fonts.sansSerif};
+    margin-bottom: 0;
+  `}
 `;
 
 export const MarkdownWrapper = styled.div`

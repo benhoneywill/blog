@@ -27,10 +27,10 @@ const makeStyles = theme => css`
 
   body {
     color: ${theme.colors.text};
-    font-family: "Lora", serif;
+    font-family: ${theme.fonts.serif};
     overflow-x: hidden;
     background: ${theme.colors.background};
-    transition: background 0.2s ease-out;
+    transition: background 0.2s ease-out, color 0.2s ease-out;
   }
 
   p {
@@ -54,7 +54,7 @@ const makeStyles = theme => css`
     line-height: ${theme.headerLineHeight};
     margin-top: ${theme.baseLineHeight * 2}rem;
     margin-bottom: 0;
-    font-family: "lato", sans-serif;
+    font-family: ${theme.fonts.sansSerif};
   }
 
   h1 {
@@ -113,8 +113,11 @@ const makeStyles = theme => css`
   code,
   kbd,
   samp {
-    color: #000;
+    color: ${theme.colors.text};
+    background-color: ${theme.colors.code};
     font-family: monospace;
+    padding: 0 3px;
+    border-radius: 2px;
   }
 
   pre {

@@ -1,25 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 // Components
-import SEO from "../components/seo";
 import Container from "../components/container";
-import PageHeader from "../components/page-header";
+import Layout from "../components/layout";
+import Hero from "../components/hero";
 
-const NotFound = () => {
+const NotFound = ({ location }) => {
   return (
-    <>
-      <SEO title="404 Not Found" />
+    <Layout title="404 Not Found" location={location}>
+      <Hero title="404" />
       <Container>
-        <PageHeader />
-        <h1>404</h1>
-        <p>
-          Sorry, that page does not seem to exist!{" "}
+        <p style={{ textAlign: "center" }}>
+          Sorry, this page does not seem to exist!{" "}
           <Link href="/">Go to the home page</Link>.
         </p>
       </Container>
-    </>
+    </Layout>
   );
+};
+
+NotFound.propTypes = {
+  location: PropTypes.object.isRequired
 };
 
 export default NotFound;

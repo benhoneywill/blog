@@ -3,30 +3,27 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 // Components
-import Post from "../components/post";
+import Posts from "../components/posts";
 import Container from "../components/container";
-import SEO from "../components/seo";
-import PageHeader from "../components/page-header";
+import Layout from "../components/layout";
+import Hero from "../components/hero";
+import SectionHeading from "../components/section-heading";
 
-const TagTemplate = ({ data, pageContext }) => {
-  const posts = data.allMdx.edges;
-
+const TagTemplate = ({ data, pageContext, location }) => {
   return (
-    <>
-      <SEO title={pageContext.slug} />
+    <Layout title={pageContext.slug} location={location}>
+      <Hero title={pageContext.slug} />
 
-      <Container>
-        <PageHeader />
-        <h3>{pageContext.slug}</h3>
-        {posts.map(({ node }) => (
-          <Post post={node} />
-        ))}
+      <Container maxWidth="1250px">
+        <SectionHeading>{pageContext.slug} Posts</SectionHeading>
+        <Posts posts={data.allMdx.edges} />
       </Container>
-    </>
+    </Layout>
   );
 };
 
 TagTemplate.propTypes = {
+  location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
@@ -54,6 +51,13 @@ export const tagQuery = graphql`
             tags
             external_link
             tagline
+            image {
+              childImageSharp {
+                fluid(maxWidth: 700) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

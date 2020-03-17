@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import Image from "gatsby-image";
 
 // Contexts
@@ -32,16 +31,14 @@ const Bio = () => {
   return (
     <Wrapper>
       <ImageWrapper>
-        <Link href="/">
-          <Image fixed={avatar.childImageSharp.fixed} alt={author} />
-        </Link>
+        <Image fixed={avatar.childImageSharp.fixed} alt={author} />
       </ImageWrapper>
 
       <div>
         <Text>
           I am <strong>Ben Honeywill</strong>, a UK based Front-End Engineer
           with <a href="https://twitter.com/LushLtd">@LushLtd</a>. JavaScript
-          lover and web dev enthusiast.
+          lover and web development enthusiast.
         </Text>
 
         <SocialIcons>

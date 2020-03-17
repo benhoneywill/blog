@@ -1,44 +1,32 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "@emotion/styled";
-import { css } from "@emotion/core";
 
 // Components
 import Container from "../components/container";
-import SEO from "../components/seo";
 import Bio from "../components/bio";
-import DarkModeToggle from "../components/dark-mode-toggle";
-import Post from "../components/post";
+import Posts from "../components/posts";
+import Layout from "../components/layout";
+import Hero from "../components/hero";
+import SectionHeading from "../components/section-heading";
 
-const ToggleWrapper = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: ${theme.baseLineHeight * 2}rem;
-  `}
-`;
-
-const Home = ({ data }) => {
-  const posts = data.allMdx.edges;
-
+const Home = ({ data, location }) => {
   return (
-    <>
-      <SEO title="Home" />
-      <Container>
-        <ToggleWrapper>
-          <DarkModeToggle />
-        </ToggleWrapper>
+    <Layout title="Home" location={location}>
+      <Hero>
         <Bio />
-        {posts.map(({ node }) => (
-          <Post post={node} />
-        ))}
+      </Hero>
+
+      <Container maxWidth="1250px">
+        <SectionHeading>All Posts</SectionHeading>
+        <Posts posts={data.allMdx.edges} />
       </Container>
-    </>
+    </Layout>
   );
 };
 
 Home.propTypes = {
+  location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(
@@ -62,6 +50,13 @@ export const homeQuery = graphql`
             tags
             external_link
             tagline
+            image {
+              childImageSharp {
+                fluid(maxWidth: 700) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
