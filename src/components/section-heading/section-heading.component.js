@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
-const Heading = styled.h5`
+const Heading = styled.span`
   ${({ theme }) => css`
     display: inline;
     border-bottom: 2px solid ${theme.colors.text};
@@ -11,7 +11,7 @@ const Heading = styled.h5`
   `}
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.h5`
   ${({ theme }) => css`
     border-bottom: 1px solid ${theme.colors.border};
     padding-bottom: ${theme.baseLineHeight * 0.25}rem;

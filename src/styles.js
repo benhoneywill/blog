@@ -20,7 +20,7 @@ const makeStyles = theme => css`
       font-size: ${theme.baseFontSize - 2}px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 430px) {
       font-size: ${theme.baseFontSize - 3}px;
     }
   }

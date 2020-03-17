@@ -3,7 +3,6 @@ import { css } from "@emotion/core";
 
 export const ImageWrapper = styled.div`
   ${({ theme }) => css`
-    position: relative;
     border-radius: 50%;
     overflow: hidden;
     width: 4.8rem;
@@ -12,10 +11,8 @@ export const ImageWrapper = styled.div`
     margin-bottom: ${theme.baseLineHeight / 2}rem;
 
     .gatsby-image-wrapper {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      width: 4.8rem !important;
+      height: 4.8rem !important;
     }
   `}
 `;
