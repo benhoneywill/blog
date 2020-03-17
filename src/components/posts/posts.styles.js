@@ -19,7 +19,7 @@ export const PostItem = styled.div`
       flex: 0 0 calc(50% - ${theme.baseLineHeight / 2}rem);
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 650px) {
       flex: 0 0 calc(100% - ${theme.baseLineHeight / 2}rem);
     }
   `}
