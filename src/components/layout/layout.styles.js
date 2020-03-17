@@ -16,6 +16,7 @@ export const BackLink = styled(Link)`
     font-weight: bold;
     line-height: ${theme.baseLineHeight};
     margin: 0;
+    line-height: 1;
     font-family: ${theme.fonts.sansSerif};
     text-decoration: none;
   `}
