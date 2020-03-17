@@ -13,7 +13,7 @@ const Tags = ({ tags, margin }) => {
   return (
     <List margin={margin}>
       {tags.map(tag => (
-        <Tag to={`/tag/${tag.toLowerCase()}`} darkMode={darkMode}>
+        <Tag to={`/tag/${tag.toLowerCase()}`} darkMode={darkMode} key={tag}>
           {tag}
         </Tag>
       ))}

@@ -64,7 +64,7 @@ const Bio = () => {
               Icon: LinkedinIcon
             }
           ].map(socialItem => (
-            <SocialIconItem>
+            <SocialIconItem key={socialItem.href}>
               <SocialIconLink href={socialItem.href}>
                 <socialItem.Icon
                   width="1.2rem"

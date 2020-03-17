@@ -11,7 +11,7 @@ const Posts = ({ posts }) => {
   return (
     <Wrapper>
       {posts.map(({ node }) => (
-        <PostItem>
+        <PostItem key={node.fields.slug}>
           <Post post={node} />
         </PostItem>
       ))}

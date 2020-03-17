@@ -11,7 +11,7 @@ const Heading = styled.h5`
   `}
 `;
 
-const Wrapper = styled.h5`
+const Wrapper = styled.div`
   ${({ theme }) => css`
     border-bottom: 1px solid ${theme.colors.border};
     padding-bottom: ${theme.baseLineHeight * 0.25}rem;
