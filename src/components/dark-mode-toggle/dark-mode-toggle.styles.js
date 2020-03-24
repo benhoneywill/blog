@@ -5,7 +5,7 @@ export const Button = styled.button`
   ${({ darkMode, theme }) => css`
     appearance: none;
     cursor: pointer;
-    background: ${darkMode ? "#000000" : "#fefefe"};
+    background: ${darkMode ? "#000000" : "#f9f9f9"};
     height: 30px;
     width: 60px;
     border-radius: 30px;

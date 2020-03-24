@@ -9,7 +9,13 @@ import Tags from "../tags";
 import Container from "../container";
 
 // Styles
-import { ArticleWrapper, PublishedAt, MarkdownWrapper } from "./article.styles";
+import {
+  ArticleWrapper,
+  PublishedAt,
+  MarkdownWrapper,
+  ArticleImage,
+  ArticleTagline
+} from "./article.styles";
 
 // Queries
 import { useSiteUrlQuery } from "./article.queries";
@@ -20,13 +26,21 @@ const Article = ({ post }) => {
   return (
     <>
       <ArticleWrapper>
-        <Container margin={1.5}>
+        <Container margin={1}>
           <PublishedAt>
             Posted on <time>{post.frontmatter.date}</time>
           </PublishedAt>
 
           <Tags tags={post.frontmatter.tags} margin={0.5} />
 
+          <ArticleTagline>{post.frontmatter.tagline}</ArticleTagline>
+        </Container>
+
+        <Container padded={false}>
+          <ArticleImage fluid={post.frontmatter.image.childImageSharp.fluid} />
+        </Container>
+
+        <Container margin={1}>
           <MarkdownWrapper>
             <MDXRenderer>{post.body}</MDXRenderer>
           </MarkdownWrapper>
@@ -50,7 +64,7 @@ const Article = ({ post }) => {
         <Bio />
 
         <p>
-          <Link href="/">← Read more</Link>
+          <Link to="/">← Read more</Link>
         </p>
       </Container>
     </>

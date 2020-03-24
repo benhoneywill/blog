@@ -7,7 +7,7 @@ import Container from "../container";
 import DarkModeToggle from "../dark-mode-toggle";
 
 // Styles
-import { Header, BackLink } from "./layout.styles";
+import { Header, BackLink, FixedHeader } from "./layout.styles";
 
 // Icons
 import HomeIcon from "../../icons/home.svg";
@@ -20,17 +20,17 @@ const Layout = ({ children, hero, location, ...seoProps }) => {
     <>
       <SEO {...seoProps} />
 
-      <Container padding={1} margin={0} maxWidth="100%" absolute={hero}>
+      <FixedHeader padding={1} margin={0} maxWidth="100%">
         <Header isHomePage={isHomePage}>
           {!isHomePage && (
-            <BackLink title="home">
+            <BackLink title="home" to="/">
               <ArrowLeftIcon />
               <HomeIcon />
             </BackLink>
           )}
           <DarkModeToggle />
         </Header>
-      </Container>
+      </FixedHeader>
 
       {children}
     </>

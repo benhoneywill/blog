@@ -20,8 +20,10 @@ const Hero = ({ title, children }) => {
       padding={3}
       bg={darkMode ? "#151515" : "#f3f3f3"}
     >
-      {title && <Heading>{title}</Heading>}
-      {children && children}
+      <Container margin={0} maxWidth="900px">
+        {title && <Heading>{title}</Heading>}
+        {children && children}
+      </Container>
     </Container>
   );
 };

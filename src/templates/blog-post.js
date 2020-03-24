@@ -13,7 +13,8 @@ const BlogPostTemplate = ({ data, location }) => {
   return (
     <Layout
       title={post.frontmatter.title}
-      description={post.excerpt}
+      description={post.frontmatter.tagline}
+      keywords={post.frontmatter.tags}
       location={location}
       image={post.frontmatter.image.childImageSharp.fluid.src}
     >
@@ -27,9 +28,10 @@ BlogPostTemplate.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
-      excerpt: PropTypes.string.isRequired,
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+        tagline: PropTypes.string.isRequired,
         image: PropTypes.shape({
           childImageSharp: PropTypes.shape({
             fluid: PropTypes.object.isRequired
@@ -47,6 +49,7 @@ export const blogPostQuery = graphql`
       frontmatter {
         title
         tags
+        tagline
         date(formatString: "MMMM Do, YYYY")
         image {
           childImageSharp {

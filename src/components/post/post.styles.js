@@ -18,7 +18,7 @@ export const ContentWrapper = styled.div`
 
 export const PublishedAt = styled.p`
   ${({ theme }) => css`
-    color: #777777;
+    color: ${theme.colors.lightText};
     font-family: ${theme.fonts.sansSerif};
     margin-top: ${theme.baseLineHeight / 2}rem;
     margin-bottom: ${theme.baseLineHeight / 2}rem;
