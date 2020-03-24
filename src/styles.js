@@ -14,7 +14,6 @@ const GlobalStyle = ({ theme }) => (
 
       html {
         font-size: 100%;
-        overflow-y: scroll;
         font-size: ${theme.baseFontSize}px;
         line-height: ${theme.baseLineHeight};
 
