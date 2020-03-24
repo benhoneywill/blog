@@ -10,6 +10,7 @@ const GlobalStyle = ({ theme }) => (
       *:before,
       *:after {
         box-sizing: border-box;
+        flex: 0 1 auto;
       }
 
       html {
