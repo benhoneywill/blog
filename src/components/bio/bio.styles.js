@@ -20,7 +20,6 @@ export const ImageWrapper = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   margin: auto;
-  max-width: 700px;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -29,6 +28,7 @@ export const Wrapper = styled.div`
 export const Text = styled.p`
   ${({ theme }) => css`
     margin-top: 0;
+    max-width: 700px;
     margin-bottom: ${theme.baseLineHeight / 2}rem;
   `}
 `;

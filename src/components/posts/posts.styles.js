@@ -11,16 +11,16 @@ export const Wrapper = styled.div`
 
 export const PostItem = styled.div`
   ${({ theme }) => css`
-    flex: 0 0 calc(100% / 3 - ${theme.baseLineHeight / 2}rem);
-    margin: 0 ${theme.baseLineHeight / 4}rem ${theme.baseLineHeight / 2}rem
+    flex: 0 0 33.333%;
+    padding: 0 ${theme.baseLineHeight / 4}rem ${theme.baseLineHeight / 2}rem
       ${theme.baseLineHeight / 4}rem;
 
     @media (max-width: 1100px) {
-      flex: 0 0 calc(50% - ${theme.baseLineHeight / 2}rem);
+      flex: 0 0 50%;
     }
 
     @media (max-width: 650px) {
-      flex: 0 0 calc(100% - ${theme.baseLineHeight / 2}rem);
+      flex: 0 0 100%;
     }
   `}
 `;
