@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  flex: 1;
   border-top: none;
   padding: 0.8rem 0.25em;
   border-radius: 0 0 3px 3px;
