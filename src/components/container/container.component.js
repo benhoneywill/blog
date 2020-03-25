@@ -17,8 +17,7 @@ Container.defaultProps = {
   bg: "transparent",
   padding: 0,
   margin: 2,
-  padded: true,
-  absolute: false
+  padded: true
 };
 
 Container.propTypes = {
@@ -26,7 +25,6 @@ Container.propTypes = {
   bg: PropTypes.string,
   padding: PropTypes.number,
   margin: PropTypes.number,
-  absolute: PropTypes.bool,
   padded: PropTypes.bool
 };
 
