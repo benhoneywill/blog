@@ -36,7 +36,7 @@ const Article = ({ post }) => {
           <ArticleTagline>{post.frontmatter.tagline}</ArticleTagline>
         </Container>
 
-        <Container padded={false}>
+        <Container padded={false} maxWidth="38rem">
           <ArticleImage fluid={post.frontmatter.image.childImageSharp.fluid} />
         </Container>
 

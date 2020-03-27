@@ -27,7 +27,7 @@ export const MarkdownWrapper = styled.div`
 export const ArticleImage = styled(Image)`
   ${({ theme }) => css`
     height: ${theme.baseLineHeight * 10}rem;
-    margin: 0 -1em;
+    width: 100%;
   `}
 `;
 
