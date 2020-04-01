@@ -13,25 +13,14 @@ module.exports = {
     "react",
     "prettier"
   ],
-  "rules": {
-    "prettier/prettier": [
-      "error"
-    ],
-    "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
-    ],
-    "react/jsx-props-no-spreading": "off",
-    "react/forbid-prop-types": "off"
-  },
   "globals": {
     "graphql": false,
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "parserOptions": {
     "sourceType": "module",

@@ -25,7 +25,9 @@ const BlogPostTemplate = ({ data, location }) => {
 };
 
 BlogPostTemplate.propTypes = {
-  location: PropTypes.object.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({

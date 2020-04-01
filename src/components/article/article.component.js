@@ -77,6 +77,7 @@ Article.propTypes = {
     frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
+      tagline: PropTypes.string.isRequired,
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
       image: PropTypes.shape({
         childImageSharp: PropTypes.shape({

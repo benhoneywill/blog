@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 // Components
 import SEO from "../seo";
-import Container from "../container";
 import DarkModeToggle from "../dark-mode-toggle";
 
 // Styles

@@ -27,7 +27,8 @@ const colorThemes = {
     heading: "#111111",
     primary: "#1E90FF",
     border: "rgba(0, 0, 0, 0.1)",
-    code: "#f5f5f5"
+    codeBackground: "#f5f5f5",
+    codeForeground: "#A159C7"
   },
 
   dark: {
@@ -38,7 +39,8 @@ const colorThemes = {
     heading: "#fefefe",
     primary: "#00aced",
     border: "rgba(255, 255, 255, 0.1)",
-    code: "#212329"
+    codeBackground: "#212329",
+    codeForeground: "#ffca8b"
   }
 };
 

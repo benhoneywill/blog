@@ -1,0 +1,142 @@
+---
+title: Protecting your GraphQL Server from Dangerous Queries
+date: 2020-04-02
+tagline: Not all queries are made equal, some could grind your server to a halt!
+image: ./graphql-fire.png
+tags:
+  - GraphQL
+  - Node
+  - JavaScript
+---
+
+Let's imagine that we are building a GraphQL API for listing recipes. Every recipe contains ingredients, and an ingredient can belong to lots of different recipes. A simple GQL schema for our API might look something like this.
+
+```graphql
+type Query {
+  getRecipes: [Recipe]!
+}
+
+type Recipe {
+  id: ID!
+  name: String!
+  ingredients: [Ingredient]!
+}
+
+type Ingredient {
+  id: ID!
+  name: String!
+  recipes: [Recipe]!
+}
+```
+
+One of the best things about GraphQL is that we can query for exactly the data we want. This is a great developer experience, but we have to consider how this can effect the performance and security of our server. You may have noticed that our schema has a circular relationship between `Recipe` and `Ingredient`. This is interesting, as it means we can form heavily nested queries. I will show you what I mean.
+
+```graphql
+query {
+  getRecipes {
+    recipes {
+      ingredients {
+        recipes {
+          ingredients {
+            recipes {
+              ingredients {
+                # ... and so on
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+This query may look amusing and harmless, but performance-wise it is very expensive to run. A malicious user could send nested queries like this to your API and crash your entire server.
+
+Thanks to a handy npm package called [graphql-depth-limit](https://github.com/stems/graphql-depth-limit) this problem is easy to fix. First, you will need to decide on a suitable depth limit for your schema. For our recipe schema it makes sense to have a maximum query depth of `2`, as that will allow us to make the following query, but not any deeper.
+
+```graphql
+query {
+  getRecipes {
+    name
+    ingredients {
+      name
+    }
+  }
+}
+```
+
+You should decide what query depth is right for your own GQL schema. Hooking up `graphql-depth-limit` is really easy, all you have to do is pass it into the `validationRules` configuration option of your GraphQL server. If you use `apollo-server` like I do then that looks like this.
+
+```js
+const { ApolloServer } = require("apollo-server");
+const depthLimit = require("graphql-depth-limit");
+const { typeDefs, resolvers } = require("./schema");
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  // Allow a maximum query depth of 2
+  validationRules: [depthLimit(2)]
+});
+```
+
+Depth limiting your schema really is that easy, and now we are protected from malicious circular query attacks. 
+
+## Query Cost Analysis
+
+Bear in mind, depth level is not the only cause of an expensive query. Queries that aren't particularly nested can still hit your database, server, and network hard if they are fetching thousands of records.
+
+[graphql-validation-complexity](https://github.com/4Catalyzer/graphql-validation-complexity) is a package that can help us quantify the complexity of our queries, and reject any requests that don't pass the validation. By doing this we can protect our GraphQL server from very expensive queries that `graphql-depth-limit` won't catch.
+
+Let's look at how you would implement Query Cost Analysis with `graphql-validation-complexity`. The library does a good job of having sane default behaviour, which makes it a plug-and-play solution for the most part. The most simple implementation looks like this.
+
+```js
+const { ApolloServer } = require("apollo-server");
+const depthLimit = require("graphql-depth-limit");
+const { createComplexityLimitRule } = require("graphql-validation-complexity");
+const { typeDefs, resolvers } = require("./schema");
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  validationRules: [
+    depthLimit(2),
+    // Allow a maximum query cost of 1000
+    createComplexityLimitRule(1000)
+  ]
+});
+```
+
+Here we've set the maximum query complexity to `1000`, you will have to experiment by reviewing the complexity of your current queries to determine a sane complexity limit for your own GraphQL server.
+
+##### So where does this complexity number come from?
+
+`graphql-validation-complexity` applies different "costs" to the different fields in your schema such as objects and scalars, and "cost factors" for lists. It uses these costs and cost factors to estimate the complexity of any given query.
+
+Of course, the library doesn't know anything about your application-specific logic - you could have a list in you schema that is particularly costly to fetch. This is why `graphql-validation-complexity` allows you to set custom costs and cost factors on fields via [schema directives](https://www.apollographql.com/docs/graphql-tools/schema-directives/).
+
+```graphql
+directive @cost(value: Int) on FIELD_DEFINITION
+directive @costFactor(value: Int) on FIELD_DEFINITION
+
+type Query {
+  getRecipes: [Recipe]!
+}
+
+type Recipe {
+  id: ID! @cost(value: 10)
+  name: String! @cost(value: 10)
+  ingredients: [Ingredient]! @costFactor(value: 50)
+}
+
+type Ingredient {
+  id: ID! @cost(value: 10)
+  name: String! @cost(value: 10)
+  recipes: [Recipe]! @costFactor(value: 50)
+}
+```
+
+Tagging your schema fields with specific costs like this means that `graphql-validation-complexity` can more accurately estimate the complexity cost of a query.
+
+The library has even more configuration options that you can set, for example how errors are handled when a query cost is too high... [Check out the docs](https://github.com/4Catalyzer/graphql-validation-complexity) to find out more.

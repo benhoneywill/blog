@@ -126,11 +126,12 @@ const GlobalStyle = ({ theme }) => (
       code,
       kbd,
       samp {
-        color: ${theme.colors.text};
-        background-color: ${theme.colors.code};
+        color: ${theme.colors.codeForeground};
+        background-color: ${theme.colors.codeBackground};
         font-family: monospace;
         padding: 0 3px;
         border-radius: 2px;
+        transition: background 0.2s ease-out, color 0.2s ease-out;
       }
 
       pre {
@@ -189,7 +190,26 @@ const GlobalStyle = ({ theme }) => (
 );
 
 GlobalStyle.propTypes = {
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.shape({
+    baseFontSize: PropTypes.number.isRequired,
+    baseLineHeight: PropTypes.number.isRequired,
+    headerLineHeight: PropTypes.number.isRequired,
+    fonts: PropTypes.shape({
+      serif: PropTypes.string.isRequired,
+      sansSerif: PropTypes.string.isRequired
+    }).isRequired,
+    colors: PropTypes.shape({
+      primary: PropTypes.string.isRequired,
+      background: PropTypes.string.isRequired,
+      light: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      lightText: PropTypes.string.isRequired,
+      heading: PropTypes.string.isRequired,
+      border: PropTypes.string.isRequired,
+      codeBackground: PropTypes.string.isRequired,
+      codeForeground: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
 };
 
 export default withTheme(GlobalStyle);

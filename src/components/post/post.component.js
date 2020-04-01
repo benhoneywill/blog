@@ -8,8 +8,7 @@ import {
   Wrapper,
   ContentWrapper,
   Tagline,
-  PostImage,
-  PostExternal
+  PostImage
 } from "./post.styles";
 
 // Components

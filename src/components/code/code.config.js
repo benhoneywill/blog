@@ -7,7 +7,7 @@ export const getCodeTheme = ({ theme, darkMode }) => {
     ...codeTheme,
     plain: {
       ...codeTheme.plain,
-      backgroundColor: theme.colors.code
+      backgroundColor: theme.colors.codeBackground
     }
   };
 };
