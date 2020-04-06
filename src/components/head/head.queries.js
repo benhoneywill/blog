@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 export const useSeoQuery = () => {
   const { site, defaultImage } = useStaticQuery(graphql`
-    query seoQuery {
+    query headQuery {
       site {
         siteMetadata {
           title

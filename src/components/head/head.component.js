@@ -6,9 +6,9 @@ import Helmet from "react-helmet";
 import { useTheme } from "../../contexts/theme";
 
 // Queries
-import { useSeoQuery } from "./seo.queries";
+import { useSeoQuery } from "./head.queries";
 
-const SEO = ({ description, lang, meta, keywords, title, image }) => {
+const Head = ({ description, lang, meta, keywords, title, image }) => {
   const { darkMode } = useTheme();
   const { siteMetadata, defaultImage } = useSeoQuery();
   const metaDescription = description || siteMetadata.description;
@@ -82,7 +82,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
   );
 };
 
-SEO.defaultProps = {
+Head.defaultProps = {
   lang: "en",
   meta: [],
   keywords: [],
@@ -90,7 +90,7 @@ SEO.defaultProps = {
   image: null
 };
 
-SEO.propTypes = {
+Head.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(
@@ -105,4 +105,4 @@ SEO.propTypes = {
   image: PropTypes.string
 };
 
-export default SEO;
+export default Head;
