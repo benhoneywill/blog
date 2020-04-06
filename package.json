@@ -39,9 +39,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
-    "react-helmet": "^5.2.1",
-    "typeface-lato": "0.0.75",
-    "typeface-lora": "0.0.72"
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
