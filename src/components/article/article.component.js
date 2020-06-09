@@ -14,7 +14,8 @@ import {
   PublishedAt,
   MarkdownWrapper,
   ArticleImage,
-  ArticleTagline
+  ArticleTagline,
+  CenteredParagraph
 } from "./article.styles";
 
 // Queries
@@ -47,7 +48,7 @@ const Article = ({ post }) => {
 
           <Tags align="center" tags={post.frontmatter.tags} />
 
-          <p style={{ textAlign: "center" }}>
+          <CenteredParagraph>
             Want to leave a comment?{" "}
             <a
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
@@ -56,16 +57,16 @@ const Article = ({ post }) => {
             >
               Discuss this article on Twitter.
             </a>
-          </p>
+          </CenteredParagraph>
         </Container>
       </ArticleWrapper>
 
       <Container>
         <Bio />
 
-        <p>
-          <Link to="/">← Read more</Link>
-        </p>
+        <CenteredParagraph>
+          <Link to="/">More from my blog</Link>
+        </CenteredParagraph>
       </Container>
     </>
   );

@@ -39,3 +39,7 @@ export const ArticleTagline = styled.p`
     transition: border-color 0.2s ease-out;
   `}
 `;
+
+export const CenteredParagraph = styled.p`
+  text-align: center;
+`;
