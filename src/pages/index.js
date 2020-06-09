@@ -9,6 +9,7 @@ import Posts from "../components/posts";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
 import SectionHeading from "../components/section-heading";
+import Tags from "../components/tags";
 
 const Home = ({ data, location }) => {
   return (
@@ -18,8 +19,13 @@ const Home = ({ data, location }) => {
       </Hero>
 
       <Container maxWidth="1250px">
-        <SectionHeading>All Posts</SectionHeading>
-        <Posts posts={data.allMdx.edges} />
+        <Tags
+          align="center"
+          tags={data.tags.group.map(tag => tag.fieldValue)}
+        />
+
+        <SectionHeading>Blog Posts</SectionHeading>
+        <Posts posts={data.posts.edges} />
       </Container>
     </Layout>
   );
@@ -30,7 +36,10 @@ Home.propTypes = {
     pathname: PropTypes.string.isRequired
   }).isRequired,
   data: PropTypes.shape({
-    allMdx: PropTypes.shape({
+    tags: PropTypes.shape({
+      group: PropTypes.arrayOf(PropTypes.string).isRequired
+    }).isRequired,
+    posts: PropTypes.shape({
       edges: PropTypes.arrayOf(
         PropTypes.shape({ node: PropTypes.object.isRequired })
       ).isRequired
@@ -40,7 +49,12 @@ Home.propTypes = {
 
 export const homeQuery = graphql`
   query {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    tags: allMdx(limit: 1000) {
+      group(field: frontmatter___tags) {
+        fieldValue
+      }
+    }
+    posts: allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           fields {

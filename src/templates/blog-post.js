@@ -8,18 +8,16 @@ import Layout from "../components/layout";
 import Hero from "../components/hero";
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.mdx;
-
   return (
     <Layout
-      title={post.frontmatter.title}
-      description={post.frontmatter.tagline}
-      keywords={post.frontmatter.tags}
+      title={data.post.frontmatter.title}
+      description={data.post.frontmatter.tagline}
+      keywords={data.post.frontmatter.tags}
       location={location}
-      image={post.frontmatter.image.childImageSharp.fluid.src}
+      image={data.post.frontmatter.image.childImageSharp.fluid.src}
     >
-      <Hero title={post.frontmatter.title} />
-      <Article post={post} />
+      <Hero title={data.post.frontmatter.title} />
+      <Article post={data.post} />
     </Layout>
   );
 };
@@ -29,7 +27,7 @@ BlogPostTemplate.propTypes = {
     pathname: PropTypes.string.isRequired
   }).isRequired,
   data: PropTypes.shape({
-    mdx: PropTypes.shape({
+    post: PropTypes.shape({
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -46,7 +44,7 @@ BlogPostTemplate.propTypes = {
 
 export const blogPostQuery = graphql`
   query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    post: mdx(fields: { slug: { eq: $slug } }) {
       id
       frontmatter {
         title

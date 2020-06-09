@@ -7,7 +7,6 @@ import Posts from "../components/posts";
 import Container from "../components/container";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
-import SectionHeading from "../components/section-heading";
 
 const TagTemplate = ({ data, pageContext, location }) => {
   return (
@@ -15,8 +14,7 @@ const TagTemplate = ({ data, pageContext, location }) => {
       <Hero title={pageContext.slug} />
 
       <Container maxWidth="1250px">
-        <SectionHeading>{pageContext.slug} Posts</SectionHeading>
-        <Posts posts={data.allMdx.edges} />
+        <Posts posts={data.posts.edges} />
       </Container>
     </Layout>
   );
@@ -27,7 +25,7 @@ TagTemplate.propTypes = {
     pathname: PropTypes.string.isRequired
   }).isRequired,
   data: PropTypes.shape({
-    allMdx: PropTypes.shape({
+    posts: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
     }).isRequired
   }).isRequired,
@@ -38,7 +36,7 @@ TagTemplate.propTypes = {
 
 export const tagQuery = graphql`
   query($slug: String!) {
-    allMdx(
+    posts: allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$slug] } } }
     ) {

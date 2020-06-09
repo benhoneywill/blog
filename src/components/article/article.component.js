@@ -45,9 +45,9 @@ const Article = ({ post }) => {
             <MDXRenderer>{post.body}</MDXRenderer>
           </MarkdownWrapper>
 
-          <Tags tags={post.frontmatter.tags} />
+          <Tags align="center" tags={post.frontmatter.tags} />
 
-          <p>
+          <p style={{ textAlign: "center" }}>
             Want to leave a comment?{" "}
             <a
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
