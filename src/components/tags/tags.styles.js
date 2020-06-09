@@ -8,7 +8,7 @@ export const List = styled.div`
     flex-wrap: wrap;
     justify-content: ${align};
     padding: ${margin * theme.baseLineHeight}rem 0;
-    margin-bottom: -10px;
+    margin-bottom: -0.5rem;
   `}
 `;
 
@@ -25,7 +25,7 @@ export const Tag = styled(Link)`
     height: ${theme.baseLineHeight}rem;
     border-radius: 4px;
     font-size: 0.75rem;
-    margin: 0 10px 10px 0;
+    margin: 0 0.5rem 0.5rem 0;
     font-family: ${theme.fonts.sansSerif};
     font-weight: bold;
     transition: opacity 0.1s ease-in-out;
