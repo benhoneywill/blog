@@ -24,7 +24,7 @@ const Head = ({ description, lang, meta, keywords, title, image }) => {
       link={[
         {
           href:
-            "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&display=swap",
+            "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&display=block",
           rel: "stylesheet"
         }
       ]}
