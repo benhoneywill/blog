@@ -49,7 +49,8 @@ const Article = ({ post }) => {
           <Tags align="center" tags={post.frontmatter.tags} />
 
           <CenteredParagraph>
-            Want to leave a comment?{" "}
+            Want to leave a comment?
+            <br />
             <a
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
                 `${siteUrl}${post.fields.slug}`

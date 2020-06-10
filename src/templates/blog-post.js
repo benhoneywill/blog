@@ -46,6 +46,7 @@ export const blogPostQuery = graphql`
   query($slug: String!) {
     post: mdx(fields: { slug: { eq: $slug } }) {
       id
+      body
       frontmatter {
         title
         tags
@@ -62,7 +63,6 @@ export const blogPostQuery = graphql`
       fields {
         slug
       }
-      body
     }
   }
 `;
