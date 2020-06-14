@@ -11,10 +11,12 @@ const PostLink = ({ children, post }) =>
 
 PostLink.propTypes = {
   children: PropTypes.node.isRequired,
+
   post: PropTypes.shape({
     fields: PropTypes.shape({
       slug: PropTypes.string
     }).isRequired,
+
     frontmatter: PropTypes.shape({
       external_link: PropTypes.string
     }).isRequired

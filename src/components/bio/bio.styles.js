@@ -3,8 +3,6 @@ import { css } from "@emotion/core";
 
 export const ImageWrapper = styled.div`
   ${({ theme }) => css`
-    border-radius: 50%;
-    overflow: hidden;
     width: 4.8rem;
     height: 4.8rem;
     flex-shrink: 0;
@@ -55,5 +53,9 @@ export const SocialIconLink = styled.a`
 
   &:hover {
     opacity: 0.8;
+  }
+
+  svg {
+    transition: fill 0.2s ease-out;
   }
 `;

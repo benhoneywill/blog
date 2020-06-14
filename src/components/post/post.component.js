@@ -43,6 +43,7 @@ Post.propTypes = {
     fields: PropTypes.shape({
       slug: PropTypes.string.isRequired
     }).isRequired,
+
     frontmatter: PropTypes.shape({
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
       title: PropTypes.string.isRequired,

@@ -142,6 +142,7 @@ const GlobalStyle = ({ theme }) => (
       }
 
       pre code {
+        display: block;
         padding: 0;
       }
 
@@ -194,10 +195,12 @@ GlobalStyle.propTypes = {
     baseFontSize: PropTypes.number.isRequired,
     baseLineHeight: PropTypes.number.isRequired,
     headerLineHeight: PropTypes.number.isRequired,
+
     fonts: PropTypes.shape({
       serif: PropTypes.string.isRequired,
       sansSerif: PropTypes.string.isRequired
     }).isRequired,
+
     colors: PropTypes.shape({
       primary: PropTypes.string.isRequired,
       background: PropTypes.string.isRequired,

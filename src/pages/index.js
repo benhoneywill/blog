@@ -35,10 +35,12 @@ Home.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired,
+
   data: PropTypes.shape({
     tags: PropTypes.shape({
       group: PropTypes.arrayOf(PropTypes.string).isRequired
     }).isRequired,
+
     posts: PropTypes.shape({
       edges: PropTypes.arrayOf(
         PropTypes.shape({ node: PropTypes.object.isRequired })
@@ -54,12 +56,14 @@ export const homeQuery = graphql`
         fieldValue
       }
     }
+
     posts: allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           fields {
             slug
           }
+
           frontmatter {
             date(formatString: "MMMM Do, YYYY")
             title

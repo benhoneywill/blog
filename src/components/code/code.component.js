@@ -8,6 +8,9 @@ import { useTheme } from "../../contexts/theme";
 // Themes
 import { getCodeTheme } from "./code.config";
 
+// Styles
+import { Token } from "./code.styles";
+
 const Code = ({ codeString, language }) => {
   const { darkMode, theme } = useTheme();
   const codeTheme = getCodeTheme({ theme, darkMode });
@@ -25,7 +28,7 @@ const Code = ({ codeString, language }) => {
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
+                  <Token {...getTokenProps({ token, key })} />
                 ))}
               </div>
             ))}

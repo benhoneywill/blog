@@ -22,7 +22,7 @@ const Hero = ({ title, children }) => {
     >
       <Container margin={0} maxWidth="900px">
         {title && <Heading>{title}</Heading>}
-        {children && children}
+        {children}
       </Container>
     </Container>
   );
@@ -34,7 +34,7 @@ Hero.defaultProps = {
 };
 
 Hero.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.node,
   children: PropTypes.node
 };
 

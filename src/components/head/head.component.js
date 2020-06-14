@@ -93,6 +93,7 @@ Head.defaultProps = {
 Head.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
+
   meta: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -100,6 +101,7 @@ Head.propTypes = {
       content: PropTypes.string.isRequired
     })
   ),
+
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   image: PropTypes.string

@@ -5,11 +5,13 @@ import PropTypes from "prop-types";
 import Head from "../head";
 import DarkModeToggle from "../dark-mode-toggle";
 
+// Components
+import Emoji from "../emoji";
+
 // Styles
 import { Header, BackLink, FixedHeader } from "./layout.styles";
 
 // Icons
-import HomeIcon from "../../icons/home.svg";
 import ArrowLeftIcon from "../../icons/arrow-left.svg";
 
 const Layout = ({ children, hero, location, ...headProps }) => {
@@ -22,9 +24,9 @@ const Layout = ({ children, hero, location, ...headProps }) => {
       <FixedHeader padding={1} margin={0} maxWidth="100%">
         <Header isHomePage={isHomePage}>
           {!isHomePage && (
-            <BackLink title="home" to="/">
+            <BackLink title="Home" to="/">
               <ArrowLeftIcon />
-              <HomeIcon />
+              <Emoji emoji="🏠" label="Home" />
             </BackLink>
           )}
           <DarkModeToggle />
@@ -43,8 +45,9 @@ Layout.defaultProps = {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   hero: PropTypes.bool,
-  location: PropTypes.shape({ pathname: PropTypes.string.isRequired })
-    .isRequired
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default Layout;

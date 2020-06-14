@@ -16,6 +16,7 @@ export const Button = styled.button`
     align-items: center;
     justify-content: ${darkMode ? "flex-end" : "flex-start"};
     transition: background 0.2s ease-out, opacity 0.1s ease-in-out;
+    font-size: 14px;
 
     &:after {
       content: "";

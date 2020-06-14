@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import Image from "gatsby-image";
@@ -41,5 +42,16 @@ export const ArticleTagline = styled.p`
 `;
 
 export const CenteredParagraph = styled.p`
-  text-align: center;
+  ${({ theme, margin }) => css`
+    text-align: center;
+    margin: ${margin * theme.baseLineHeight}rem 0;
+  `}
 `;
+
+CenteredParagraph.defaultProps = {
+  margin: 1
+};
+
+CenteredParagraph.propTypes = {
+  margin: PropTypes.number
+};

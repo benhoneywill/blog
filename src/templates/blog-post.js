@@ -26,6 +26,7 @@ BlogPostTemplate.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired,
+
   data: PropTypes.shape({
     post: PropTypes.shape({
       frontmatter: PropTypes.shape({
@@ -47,6 +48,7 @@ export const blogPostQuery = graphql`
     post: mdx(fields: { slug: { eq: $slug } }) {
       id
       body
+
       frontmatter {
         title
         tags
@@ -60,6 +62,7 @@ export const blogPostQuery = graphql`
           }
         }
       }
+
       fields {
         slug
       }

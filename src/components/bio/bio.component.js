@@ -8,10 +8,12 @@ import { useTheme } from "../../contexts/theme";
 import TwitterIcon from "../../icons/twitter.svg";
 import LinkedinIcon from "../../icons/linkedin.svg";
 import GithubIcon from "../../icons/github.svg";
-import InstagramIcon from "../../icons/instagram.svg";
 
 // Queries
 import { useBioQuery } from "./bio.queries";
+
+// Components
+import Emoji from "../emoji";
 
 // Styles
 import {
@@ -36,9 +38,13 @@ const Bio = () => {
 
       <div>
         <Text>
-          I am <strong>Ben Honeywill</strong>, a UK based Front-End Engineer
-          with <a href="https://twitter.com/LushLtd">@LushLtd</a>. JavaScript
-          lover and web development enthusiast.
+          I am <strong>Ben Honeywill</strong>. I&#39;m from The UK{" "}
+          <Emoji emoji="🇬🇧" label="Union Jack" /> I&#39;m a Front-End Engineer{" "}
+          <Emoji emoji="💻" label="Laptop" /> I work with{" "}
+          <a href="https://twitter.com/LushLtd">@LushLtd</a>{" "}
+          <Emoji emoji="🧼" label="Soap" /> Web development{" "}
+          <Emoji emoji="❤️" label="Heart" /> Javascript{" "}
+          <Emoji emoji="🤘" label="Awesome" />
         </Text>
 
         <SocialIcons>
@@ -46,26 +52,24 @@ const Bio = () => {
             {
               href: `https://twitter.com/${social.twitter}`,
               color: "#00acee",
-              Icon: TwitterIcon
+              Icon: TwitterIcon,
+              title: "Twitter"
             },
             {
               href: `https://github.com/${social.github}`,
               color: darkMode ? "rgba(255, 255, 255, 0.8)" : "#333333",
-              Icon: GithubIcon
-            },
-            {
-              href: `https://instagram.com/${social.instagram}`,
-              color: "#9B59B6",
-              Icon: InstagramIcon
+              Icon: GithubIcon,
+              title: "Github"
             },
             {
               href: `https://linkedin.com/in/${social.linkedin}`,
-              color: "#2867B2",
-              Icon: LinkedinIcon
+              color: darkMode ? "#00a0dc" : "#0072bb",
+              Icon: LinkedinIcon,
+              title: "Linkedin"
             }
           ].map(socialItem => (
             <SocialIconItem key={socialItem.href}>
-              <SocialIconLink href={socialItem.href}>
+              <SocialIconLink title={socialItem.title} href={socialItem.href}>
                 <socialItem.Icon
                   width="1.2rem"
                   height="1.2rem"

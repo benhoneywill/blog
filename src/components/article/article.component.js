@@ -7,6 +7,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import Bio from "../bio";
 import Tags from "../tags";
 import Container from "../container";
+import Emoji from "../emoji";
 
 // Styles
 import {
@@ -49,14 +50,13 @@ const Article = ({ post }) => {
           <Tags align="center" tags={post.frontmatter.tags} />
 
           <CenteredParagraph>
-            Want to leave a comment?
-            <br />
+            <Emoji emoji="💬" label="Comment" />{" "}
             <a
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
                 `${siteUrl}${post.fields.slug}`
               )}`}
             >
-              Discuss this article on Twitter.
+              Comment on this article with Twitter
             </a>
           </CenteredParagraph>
         </Container>
@@ -65,8 +65,9 @@ const Article = ({ post }) => {
       <Container>
         <Bio />
 
-        <CenteredParagraph>
-          <Link to="/">More from my blog</Link>
+        <CenteredParagraph margin={2}>
+          <Emoji emoji="📖" label="Book" />{" "}
+          <Link to="/">Read more of my blog</Link>
         </CenteredParagraph>
       </Container>
     </>
@@ -76,17 +77,20 @@ const Article = ({ post }) => {
 Article.propTypes = {
   post: PropTypes.shape({
     body: PropTypes.string.isRequired,
+
     frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       tagline: PropTypes.string.isRequired,
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+
       image: PropTypes.shape({
         childImageSharp: PropTypes.shape({
           fluid: PropTypes.object.isRequired
         }).isRequired
       }).isRequired
     }).isRequired,
+
     fields: PropTypes.shape({
       slug: PropTypes.string.isRequired
     }).isRequired

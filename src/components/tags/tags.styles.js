@@ -18,7 +18,7 @@ export const Tag = styled(Link)`
     background-color: ${darkMode
       ? "rgba(255, 255, 255, 0.1)"
       : "rgba(0, 0, 0, 0.1)"};
-    color: ${darkMode ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)"};
+    color: ${theme.colors.text};
     display: inline-flex;
     align-items: center;
     padding: 0 15px;
