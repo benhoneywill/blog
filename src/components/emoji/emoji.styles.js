@@ -2,9 +2,7 @@ import styled from "@emotion/styled";
 import Image from "gatsby-image/withIEPolyfill";
 
 export const Wrapper = styled.span`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   height: 1em;
   width: 1em;
 
@@ -15,9 +13,7 @@ export const Wrapper = styled.span`
 `;
 
 export const EmojiImg = styled(Image)`
-  max-height: 100%;
-  max-width: 100%;
   height: 100%;
   width: 100%;
-  display: inline-block;
+  display: block;
 `;

@@ -39,7 +39,7 @@ const Bio = () => {
       <div style={{ fontSize: 20 }}>
         <Text>
           I am <strong>Ben Honeywill</strong>. I&#39;m a Front-End Engineer from
-          the UK. I work for <a href="https://twitter.com/LushLtd">@LushLtd</a>.{" "}
+          the UK. I work for <a href="https://twitter.com/LushLtd">@LushLtd</a>.
           Web development <Emoji emoji="❤️" label="Heart" /> Javascript{" "}
           <Emoji emoji="🤘" label="Awesome" />
         </Text>
