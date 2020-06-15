@@ -33,5 +33,9 @@ export const Tag = styled(Link)`
     &:hover {
       opacity: 0.8;
     }
+
+    &:last-child {
+      margin-right: 0;
+    }
   `}
 `;
