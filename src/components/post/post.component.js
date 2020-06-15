@@ -19,7 +19,10 @@ const Post = ({ post }) => {
   return (
     <Wrapper>
       <PostLink post={post}>
-        <PostImage fluid={post.frontmatter.image.childImageSharp.fluid} />
+        <PostImage
+          fluid={post.frontmatter.image.childImageSharp.fluid}
+          alt={post.frontmatter.title}
+        />
       </PostLink>
 
       <ContentWrapper>
