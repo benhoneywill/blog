@@ -6,7 +6,7 @@ export const getTagEmoji = tag => {
       return "💜";
     case "JavaScript":
       return "🤘";
-    case "Node":
+    case "NodeJS":
       return "📦";
     case "React":
       return "⚛️";
