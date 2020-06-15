@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import Image from "gatsby-image";
+import Image from "gatsby-image/withIEPolyfill";
 
 export const Wrapper = styled.div`
   height: 100%;

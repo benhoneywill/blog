@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// Config
-import { EMOJIS } from "./emoji.config";
+// Queries
+import { useEmojiQuery } from "./emoji.queries";
 
 // Styles
 import { Wrapper, EmojiImg } from "./emoji.styles";
 
 const Emoji = ({ label, emoji }) => {
-  const imgSrc = EMOJIS[emoji];
+  const emojiData = useEmojiQuery(emoji);
 
-  if (!imgSrc) {
+  if (!emojiData) {
     return (
       <span role="img" aria-label={label}>
         {emoji}
@@ -20,7 +20,7 @@ const Emoji = ({ label, emoji }) => {
 
   return (
     <Wrapper>
-      <EmojiImg src={imgSrc} alt={label} />
+      <EmojiImg Tag="span" fluid={emojiData.fluid} alt={label} />
     </Wrapper>
   );
 };

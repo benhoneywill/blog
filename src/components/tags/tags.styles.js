@@ -27,7 +27,7 @@ export const Tag = styled(Link)`
     font-size: 0.75rem;
     margin: 0 0.5rem 0.5rem 0;
     font-family: ${theme.fonts.sansSerif};
-    font-weight: bold;
+    font-weight: ${theme.fontWeights.bold};
     transition: opacity 0.1s ease-in-out;
 
     &:hover {

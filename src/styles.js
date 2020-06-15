@@ -16,6 +16,7 @@ const GlobalStyle = ({ theme }) => (
       html {
         font-size: 100%;
         font-size: ${theme.baseFontSize}px;
+        font-weight: ${theme.fontWeights.normal};
         line-height: ${theme.baseLineHeight};
 
         @media (max-width: 750px) {
@@ -51,7 +52,7 @@ const GlobalStyle = ({ theme }) => (
       h4,
       h5,
       h6 {
-        font-weight: bold;
+        font-weight: 70 ${theme.fontWeights.bold}0;
         color: ${theme.colors.heading};
         line-height: ${theme.headerLineHeight};
         margin-top: ${theme.baseLineHeight * 2}rem;
@@ -148,7 +149,7 @@ const GlobalStyle = ({ theme }) => (
 
       b,
       strong {
-        font-weight: bold;
+        font-weight: ${theme.fontWeights.bold};
       }
 
       ul,
@@ -199,6 +200,11 @@ GlobalStyle.propTypes = {
     fonts: PropTypes.shape({
       serif: PropTypes.string.isRequired,
       sansSerif: PropTypes.string.isRequired
+    }).isRequired,
+
+    fontWeights: PropTypes.shape({
+      normal: PropTypes.number.isRequired,
+      bold: PropTypes.number.isRequired
     }).isRequired,
 
     colors: PropTypes.shape({

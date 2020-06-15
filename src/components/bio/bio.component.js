@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "gatsby-image";
+import Image from "gatsby-image/withIEPolyfill";
 
 // Contexts
 import { useTheme } from "../../contexts/theme";
@@ -36,14 +36,11 @@ const Bio = () => {
         <Image fixed={avatar.childImageSharp.fixed} alt={author} />
       </ImageWrapper>
 
-      <div>
+      <div style={{ fontSize: 20 }}>
         <Text>
-          I am <strong>Ben Honeywill</strong>. I&#39;m from The UK{" "}
-          <Emoji emoji="🇬🇧" label="Union Jack" /> I&#39;m a Front-End Engineer{" "}
-          <Emoji emoji="💻" label="Laptop" /> I work with{" "}
-          <a href="https://twitter.com/LushLtd">@LushLtd</a>{" "}
-          <Emoji emoji="🧼" label="Soap" /> Web development{" "}
-          <Emoji emoji="❤️" label="Heart" /> Javascript{" "}
+          I am <strong>Ben Honeywill</strong>. I&#39;m a Front-End Engineer from
+          the UK. I work for <a href="https://twitter.com/LushLtd">@LushLtd</a>.{" "}
+          Web development <Emoji emoji="❤️" label="Heart" /> Javascript{" "}
           <Emoji emoji="🤘" label="Awesome" />
         </Text>
 

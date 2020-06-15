@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Image from "gatsby-image/withIEPolyfill";
 
 export const Wrapper = styled.span`
   display: inline-flex;
@@ -13,7 +14,10 @@ export const Wrapper = styled.span`
   }
 `;
 
-export const EmojiImg = styled.img`
+export const EmojiImg = styled(Image)`
   max-height: 100%;
   max-width: 100%;
+  height: 100%;
+  width: 100%;
+  display: inline-block;
 `;

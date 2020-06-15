@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import Image from "gatsby-image";
+import Image from "gatsby-image/withIEPolyfill";
 
 export const ArticleWrapper = styled.article`
   ${({ theme }) => css`

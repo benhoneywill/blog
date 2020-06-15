@@ -32,7 +32,7 @@ export const FixedHeader = styled(Container)`
 export const BackLink = styled(Link)`
   ${({ theme }) => css`
     font-size: ${theme.baseLineHeight / theme.headerLineHeight}rem;
-    font-weight: bold;
+    font-weight: ${theme.fontWeights.bold};
     line-height: ${theme.baseLineHeight};
     margin: 0;
     line-height: 1;

@@ -13,8 +13,12 @@ const themeDefaults = {
   baseLineHeight: 1.6,
   headerLineHeight: 1.2,
   fonts: {
-    serif: `"Lora", Constantia, ‘Lucida Bright’, Lucidabright, ‘Lucida Serif’, Lucida, ‘DejaVu Serif’, ‘Bitstream Vera Serif’, ‘Liberation Serif’, Georgia, serif`,
-    sansSerif: `"lato",Frutiger, ‘Frutiger Linotype’, Univers, Calibri, ‘Gill Sans’, ‘Gill Sans MT’, ‘Myriad Pro’, Myriad, ‘DejaVu Sans Condensed’, ‘Liberation Sans’, ‘Nimbus Sans L’, Tahoma, Geneva, ‘Helvetica Neue’, Helvetica, Arial, sans-serif`
+    serif: `"Lora", Georgia, serif`,
+    sansSerif: `"lato", ‘Helvetica Neue’, Helvetica, Arial, sans-serif`
+  },
+  fontWeights: {
+    normal: 400,
+    bold: 700
   }
 };
 
