@@ -10,6 +10,7 @@ import Posts from "../components/posts";
 import Container from "../components/container";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
+import SectionHeading from "../components/section-heading";
 import Emoji from "../components/emoji";
 
 const TagTemplate = ({ data, pageContext, location }) => {
@@ -28,6 +29,7 @@ const TagTemplate = ({ data, pageContext, location }) => {
       />
 
       <Container maxWidth="1250px">
+        <SectionHeading>Blog Posts</SectionHeading>
         <Posts posts={data.posts.edges} />
       </Container>
     </Layout>

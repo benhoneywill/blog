@@ -1,29 +1,31 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-const getEmojiImgFromQueryData = (emoji, data) => {
+const getEmojiImgFromQueryData = (emoji, data = {}) => {
   switch (emoji) {
     case "⚛️":
-      return data.atom.childImageSharp;
+      return data.atom?.childImageSharp;
     case "📖":
-      return data.book.childImageSharp;
+      return data.book?.childImageSharp;
+    case "💥":
+      return data.explode?.childImageSharp;
     case "❤️":
-      return data.heart.childImageSharp;
+      return data.heart?.childImageSharp;
     case "🏠":
-      return data.house.childImageSharp;
+      return data.house?.childImageSharp;
     case "🤘":
-      return data.metal.childImageSharp;
+      return data.metal?.childImageSharp;
     case "🌙":
-      return data.moon.childImageSharp;
+      return data.moon?.childImageSharp;
     case "📦":
-      return data.package.childImageSharp;
+      return data.package?.childImageSharp;
     case "🎨":
-      return data.palette.childImageSharp;
+      return data.palette?.childImageSharp;
     case "💜":
-      return data.purpleHeart.childImageSharp;
+      return data.purpleHeart?.childImageSharp;
     case "💬":
-      return data.speechBalloon.childImageSharp;
+      return data.speechBalloon?.childImageSharp;
     case "☀️":
-      return data.sun.childImageSharp;
+      return data.sun?.childImageSharp;
     default:
       return null;
   }
@@ -44,6 +46,14 @@ export const useEmojiQuery = emoji => {
           }
 
           book: file(absolutePath: { regex: "/emoji/book.png/" }) {
+            childImageSharp {
+              fluid(maxWidth: 80) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+
+          explode: file(absolutePath: { regex: "/emoji/explode.png/" }) {
             childImageSharp {
               fluid(maxWidth: 80) {
                 ...GatsbyImageSharpFluid
