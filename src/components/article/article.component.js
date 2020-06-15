@@ -67,7 +67,7 @@ const Article = ({ post }) => {
 
         <CenteredParagraph margin={2}>
           <Emoji emoji="📖" label="Book" />{" "}
-          <Link to="/">Read more of my blog</Link>
+          <Link to="/">Read more of my articles</Link>
         </CenteredParagraph>
       </Container>
     </>
