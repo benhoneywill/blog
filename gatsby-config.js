@@ -4,6 +4,7 @@ const gatsbyPluginMDX = require("./gatsby/config/plugins/gatsby-plugin-mdx");
 const gatsbyPluginReactSVG = require("./gatsby/config/plugins/gatsby-plugin-react-svg");
 const gatsbyPluginManifest = require("./gatsby/config/plugins/gatsby-plugin-manifest");
 const gatsbyPluginGoogleAnalytics = require("./gatsby/config/plugins/gatsby-plugin-google-analytics");
+const gatsbyPluginCanonicalUrls = require("./gatsby/config/plugins/gatsby-plugin-canonical-urls");
 
 module.exports = {
   siteMetadata,
@@ -17,6 +18,7 @@ module.exports = {
     gatsbyPluginManifest,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    gatsbyPluginGoogleAnalytics
+    gatsbyPluginGoogleAnalytics,
+    gatsbyPluginCanonicalUrls
   ]
 };

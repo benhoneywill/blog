@@ -9,6 +9,9 @@ import Tags from "../tags";
 import Container from "../container";
 import Emoji from "../emoji";
 
+// Icons
+import TwitterIcon from "../../icons/twitter.svg";
+
 // Styles
 import {
   ArticleWrapper,
@@ -16,7 +19,8 @@ import {
   MarkdownWrapper,
   ArticleImage,
   ArticleTagline,
-  CenteredParagraph
+  CenteredParagraph,
+  ShareLink
 } from "./article.styles";
 
 // Queries
@@ -25,9 +29,21 @@ import { useSiteUrlQuery } from "./article.queries";
 const Article = ({ post }) => {
   const siteUrl = useSiteUrlQuery();
 
+  const tweetMsg = `${post.frontmatter.title}\n\n${post.frontmatter.tagline}\n\nBy @benhoneywill\n\n${siteUrl}${post.fields.slug}`;
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${escape(tweetMsg)}`;
+
   return (
     <>
       <ArticleWrapper>
+        <ShareLink
+          title="Share on Twitter"
+          href={tweetUrl}
+          rel="noreferrer"
+          target="_blank"
+        >
+          <TwitterIcon fill="#00acee" height="1.6rem" width="1.6rem" />
+        </ShareLink>
+
         <Container margin={1}>
           <PublishedAt>
             Posted on <time>{post.frontmatter.date}</time>
@@ -52,6 +68,8 @@ const Article = ({ post }) => {
           <CenteredParagraph>
             <Emoji emoji="💬" label="Comment" />{" "}
             <a
+              rel="noreferrer"
+              target="_blank"
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
                 `${siteUrl}${post.fields.slug}`
               )}`}

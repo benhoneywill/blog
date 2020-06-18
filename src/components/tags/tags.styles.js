@@ -13,11 +13,9 @@ export const List = styled.div`
 `;
 
 export const Tag = styled(Link)`
-  ${({ theme, darkMode }) => css`
+  ${({ theme }) => css`
     text-decoration: none;
-    background-color: ${darkMode
-      ? "rgba(255, 255, 255, 0.1)"
-      : "rgba(0, 0, 0, 0.1)"};
+    background-color: ${theme.colors.border};
     color: ${theme.colors.text};
     display: inline-flex;
     align-items: center;

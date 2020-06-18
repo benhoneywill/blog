@@ -5,6 +5,7 @@ import Image from "gatsby-image/withIEPolyfill";
 
 export const ArticleWrapper = styled.article`
   ${({ theme }) => css`
+    position: relative;
     margin: ${theme.baseLineHeight * 2}rem auto;
     padding-bottom: ${theme.baseLineHeight}rem;
     border-bottom: 1px solid ${theme.colors.border};
@@ -36,7 +37,7 @@ export const ArticleTagline = styled.p`
   ${({ theme }) => css`
     font-size: 1.2rem;
     line-height: ${theme.baseLineHeight / 1.2};
-    margin-top: ${theme.baseLineHeight * 0.5}rem;
+    margin: 0;
     transition: border-color 0.2s ease-out;
   `}
 `;
@@ -55,3 +56,28 @@ CenteredParagraph.defaultProps = {
 CenteredParagraph.propTypes = {
   margin: PropTypes.number
 };
+
+export const ShareLink = styled.a`
+  ${({ theme }) => css`
+    position: absolute;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: ${theme.baseLineHeight}rem;
+    left: 1em;
+    border-radius: 5px;
+    width: ${theme.baseLineHeight}rem;
+    margin-bottom: -${theme.baseLineHeight * 2}rem;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 1020px) {
+      display: none;
+    }
+  `}
+`;

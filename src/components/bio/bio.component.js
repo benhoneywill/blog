@@ -39,8 +39,15 @@ const Bio = () => {
       <div style={{ fontSize: 20 }}>
         <Text>
           I am <strong>Ben Honeywill</strong>. I&#39;m a Front-End Engineer from
-          the UK. I work for <a href="https://twitter.com/LushLtd">@LushLtd</a>.
-          Web development <Emoji emoji="❤️" label="Heart" /> JavaScript{" "}
+          the UK. I work for{" "}
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="https://twitter.com/LushLtd"
+          >
+            @LushLtd
+          </a>
+          . Web development <Emoji emoji="❤️" label="Heart" /> JavaScript{" "}
           <Emoji emoji="🤘" label="Awesome" />
         </Text>
 
@@ -66,7 +73,12 @@ const Bio = () => {
             }
           ].map(socialItem => (
             <SocialIconItem key={socialItem.href}>
-              <SocialIconLink title={socialItem.title} href={socialItem.href}>
+              <SocialIconLink
+                title={socialItem.title}
+                href={socialItem.href}
+                rel="noreferrer"
+                target="_blank"
+              >
                 <socialItem.Icon
                   width="1.2rem"
                   height="1.2rem"

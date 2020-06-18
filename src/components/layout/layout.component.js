@@ -9,7 +9,12 @@ import DarkModeToggle from "../dark-mode-toggle";
 import Emoji from "../emoji";
 
 // Styles
-import { Header, BackLink, FixedHeader } from "./layout.styles";
+import {
+  Header,
+  BackLink,
+  Wrapper,
+  DarkModeToggleWrapper
+} from "./layout.styles";
 
 // Icons
 import ArrowLeftIcon from "../../icons/arrow-left.svg";
@@ -21,17 +26,19 @@ const Layout = ({ children, hero, location, ...headProps }) => {
     <>
       <Head {...headProps} />
 
-      <FixedHeader padding={1} margin={0} maxWidth="100%">
-        <Header isHomePage={isHomePage}>
+      <Header padded padding={1} margin={0} maxWidth="100%">
+        <Wrapper isHomePage={isHomePage}>
           {!isHomePage && (
             <BackLink title="Home" to="/">
               <ArrowLeftIcon />
               <Emoji emoji="🏠" label="Home" />
             </BackLink>
           )}
-          <DarkModeToggle />
-        </Header>
-      </FixedHeader>
+          <DarkModeToggleWrapper>
+            <DarkModeToggle />
+          </DarkModeToggleWrapper>
+        </Wrapper>
+      </Header>
 
       {children}
     </>
