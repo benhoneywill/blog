@@ -17,7 +17,6 @@ export const useBioQuery = () => {
             author
             social {
               twitter
-              instagram
               linkedin
               github
             }
