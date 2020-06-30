@@ -2,12 +2,11 @@ module.exports = {
   title: "Ben Honeywill",
   author: "Ben Honeywill",
   description:
-    "I am Ben Honeywill, a Front-End Engineer from Bournemouth, UK. JavaSript lover and web development enthusiast.",
+    "I am Ben Honeywill. I'm a Front-End Engineer from Bournemouth, UK. I work for @LushLtd. Web development ❤️ JavaScript 🤘",
   siteUrl: "https://benhoneywill.com",
   social: {
     twitter: "benhoneywill",
     github: "benhoneywill",
-    linkedin: "benhoneywill",
-    instagram: "benhoneywill"
+    linkedin: "benhoneywill"
   }
 };
