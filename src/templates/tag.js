@@ -15,7 +15,11 @@ import Emoji from "../components/emoji";
 
 const TagTemplate = ({ data, pageContext, location }) => {
   return (
-    <Layout title={pageContext.slug} location={location}>
+    <Layout
+      title={pageContext.slug}
+      description={`I am Ben Honeywill, a UK based Front-End Engineer. Read my ${pageContext.slug} articles here.`}
+      location={location}
+    >
       <Hero
         title={
           <>
