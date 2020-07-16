@@ -9,10 +9,12 @@ export const Wrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  border-top: none;
-  padding: 0.8rem 0.25em;
-  border-radius: 0 0 3px 3px;
-  transition: border-color 0.2s ease-out;
+  ${({ theme }) => css`
+    border-top: none;
+    padding: ${theme.baseLineHeight / 2}rem 0.25em;
+    border-radius: 0 0 3px 3px;
+    transition: border-color 0.2s ease-out;
+  `}
 `;
 
 export const PublishedAt = styled.p`

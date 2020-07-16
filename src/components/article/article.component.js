@@ -28,6 +28,20 @@ import { useSiteUrlQuery } from "./article.queries";
 
 const Article = ({ post }) => {
   const siteUrl = useSiteUrlQuery();
+  const [showShareLink, setShowShareLink] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = (e) => {
+      if (window.pageYOffset > 800) {
+        setShowShareLink(true);
+      } else {
+        setShowShareLink(false);
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const tweetMsg = `${post.frontmatter.title}\n\n${post.frontmatter.tagline}\n\nBy @benhoneywill\n\n${siteUrl}${post.fields.slug}`;
   const tweetUrl = `https://twitter.com/intent/tweet?text=${escape(tweetMsg)}`;
@@ -40,6 +54,7 @@ const Article = ({ post }) => {
           href={tweetUrl}
           rel="noreferrer"
           target="_blank"
+          show={showShareLink}
         >
           <TwitterIcon fill="#00acee" height="1.6rem" width="1.6rem" />
         </ShareLink>

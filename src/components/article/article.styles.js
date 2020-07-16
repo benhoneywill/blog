@@ -58,7 +58,7 @@ CenteredParagraph.propTypes = {
 };
 
 export const ShareLink = styled.a`
-  ${({ theme }) => css`
+  ${({ theme, show }) => css`
     position: absolute;
     position: sticky;
     display: flex;
@@ -69,7 +69,8 @@ export const ShareLink = styled.a`
     border-radius: 5px;
     width: ${theme.baseLineHeight}rem;
     margin-bottom: -${theme.baseLineHeight * 2}rem;
-    opacity: 0.9;
+    opacity: ${show ? 0.9 : 0};
+    pointer-events: ${show ? 'auto' : 'none'};
     transition: opacity 0.2s ease;
 
     &:hover {
