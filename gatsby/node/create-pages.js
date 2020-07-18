@@ -8,6 +8,7 @@ const blogPostsQuery = `{
         frontmatter {
           tags
           external_link
+          unpublished
         }
         fields { slug }
       }
