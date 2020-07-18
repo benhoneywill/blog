@@ -97,6 +97,11 @@ const GlobalStyle = ({ theme }) => (
         line-height: ${theme.baseLineHeight};
       }
 
+      button {
+        font-size: ${theme.baseFontSize}px;
+        line-height: ${theme.baseLineHeight};
+      }
+
       blockquote {
         color: ${theme.colors.lightText};
         margin: ${theme.baseLineHeight * 2}rem 0;

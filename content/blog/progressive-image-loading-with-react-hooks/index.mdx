@@ -1,0 +1,73 @@
+---
+title: Progressive Image Loading with React Hooks
+date: 2020-07-18
+tagline: Improve the perceived load times of your large images.
+image: ./image-loading.png
+tags:
+  - React
+  - JavaScript
+---
+
+Last week I was building a web page for our e-commerce site, the design had a really beautiful large
+hero image that took up half the width of the screen. After implementing the design I noticed
+that on slower internet connections this beautiful large image loaded *very* slowly.
+
+The designer intended any user's first impression of this page to be __Wow, look at that beautiful imagery__.
+Unfortunately as the image was so large they were instead presented with a bland page while it loaded.
+
+##### An example of the problem
+
+import ProblemExample from './components/problem-example';
+
+<ProblemExample />
+
+Hopefully you can see that the image loads quite slowly. If not then... congratulations on your super-fast
+internet connection! Hopefully you can still follow along by *imagining* it was slow to load.
+
+##### How to solve this problem?
+
+Obviously I couldn't let this fly. I wanted to come up with a reusable solution that allowed
+me to show a representation of the image while it loaded, as this would let me stick to the designer's
+initial vision.
+
+There is a technique commonly know as "Blurring Up" images. This involves initially rendering a very small
+image, scaling it up and then applying a Gaussian Blur. This method is what I settled on using, and I think the
+result is pretty good.
+
+Below is an example of the finished product. Compare it to the slow version above, what do you think?
+
+import FinishedExample from './components/finished-example';
+
+<FinishedExample />
+
+I think it works very nicely. One of the most important things for me when implementing this was that I wanted
+it to be reusable, as I wanted to easily add this effect whenever I was dealing with a large image. I also wanted it
+to work for both `<img />` tags and background images, as we use a mixture of these depending on the context.
+
+##### The solution
+
+Whenever I am working in React and want something reusable I think "Could I make this a hook?".
+Check out the code below.
+
+```js
+import React from 'react';
+
+const useProgressiveImg = (lowQualitySrc, highQualitySrc) => {
+  const [src, setSrc] = React.useState(lowQualitySrc);
+
+  React.useEffect(() => {
+    setSrc(lowQualitySrc);
+
+    const img = new Image();
+    img.src = highQualitySrc;
+
+    img.onload = () => {
+      setSrc(highQualitySrc);
+    };
+  }, [lowQualitySrc, highQualitySrc]);
+
+  return [src, { blur: src === lowQualitySrc }];
+};
+
+export default useProgressiveImg;
+```
