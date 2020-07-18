@@ -8,10 +8,10 @@ import useProgressiveImg from "../hooks/use-progressive-img";
 import Img from "./img";
 
 const FinishedExample = () => {
-  const [uncache, setUncache] = React.useState(0);
+  const [uncache, setUncache] = React.useState(Date.now());
   const [src, { blur }] = useProgressiveImg(smallSrc, bigSrc + `?uncache=${uncache}`);
-  console.log(uncache)
-  return <Img src={src} blur={blur} onChange={() => setUncache(uncache + 1)} />
+
+  return <Img src={src} blur={blur} onChange={() => setUncache(Date.now())} />
 }
 
 export default FinishedExample;
