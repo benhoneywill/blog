@@ -33,7 +33,7 @@ const TagTemplate = ({ data, pageContext, location }) => {
       />
 
       <Container maxWidth="1250px">
-        <SectionHeading>Blog Posts</SectionHeading>
+        <SectionHeading>{pageContext.slug} Posts </SectionHeading>
         <Posts posts={data.posts.edges} />
       </Container>
     </Layout>
