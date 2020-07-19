@@ -29,6 +29,7 @@ const Box = styled.div`
     justify-content: center;
     height: 100%;
     width: 100%;
+    transition: background-color 0.2s ease-out;
     background-color: ${theme.colors.codeBackground};
     font-family: ${theme.fonts.sansSerif};
     background-image: url(${bg});

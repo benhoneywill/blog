@@ -11,6 +11,7 @@ const Button = styled.button`
     color: ${theme.colors.text};
     border: 1px solid ${theme.colors.border};
     background-color: ${theme.colors.button};
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
     border-radius: 3px;
 
     &:hover {
