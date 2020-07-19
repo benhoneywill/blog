@@ -46,7 +46,7 @@ to work for both `<img />` tags and background images, as we use a mixture of th
 
 ##### The solution
 
-Whenever I am working in React and want something reusable I think "Could I make this a hook?".
+Whenever I am working in React and want something reusable I think "Could I make this a hook?”.
 Check out the code below.
 
 ```js
@@ -71,3 +71,59 @@ const useProgressiveImg = (lowQualitySrc, highQualitySrc) => {
 
 export default useProgressiveImg;
 ```
+
+This is a hook which accepts two arguments: a low-quality image `src`, and a high-quality image `src`.
+
+By default this hook will return the `src` of the low-quality pixelated image.
+Once the higher quality image has loaded, it will return that instead.
+This is achieved by adding an event listener to a new `Image` object. The `src` attribute of this `Image`
+is set to the `src` of our __high quality image__, so the event listener fires once the full-size image has loaded.
+
+Once that image has loaded we switch from returning the pixelated image to returning the full-size image.
+
+You may have also noticed that this hook returns a second value, which is an object containing a value
+I have called `blur`. We can use this to know whether or not we need to "blur" the image. If the current
+`src` being returned is that of the the low-quality image, then we should blur the image, as that is the
+nasty pixelated one.
+
+##### Usage
+
+Here is an example of how to use this hook to get the desired "blur up" effect.
+
+```js
+import React from "react";
+import useProgressiveImg from "./useProgressiveImg";
+
+const BlurredUpImage = () => {
+  const [src, { blur }] = useProgressiveImg(
+    "./tiny.jpg",
+    "./large.jpg"
+  );
+
+  return (
+    <img
+      src={src}
+      style={{
+        width: 200,
+        filter: blur
+          ? "blur(20px)"
+          : "none",
+        transition: blur
+          ? "none"
+          : "filter 0.3s ease-out"
+      }}
+    />
+  )
+}
+```
+
+In this example `tiny.jpg` should be a very small version of the full-size image `large.jpg`.
+
+I have used inline styles here for simplicity's sake, but you could also use the `blur` value to toggle a
+class, or pass it in as a prop to a styled component. The important thing here is that we are adding a
+CSS `blur()` filter if the image hasn't loaded yet. The `transition` makes the transition between the
+blurred and non-blurred states nice and smooth.
+
+##### Thanks for reading!
+
+Let me know if this article was useful to you by using the twitter comment link below.

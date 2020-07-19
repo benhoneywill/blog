@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const ImgContainer = styled.div`
   ${({ theme }) => css`
     overflow: hidden;
-    height: ${theme.baseLineHeight * 13}rem;
+    height: ${theme.baseLineHeight * 10}rem;
     width: 100%;
     margin-bottom: ${theme.baseLineHeight}rem;
   `}
@@ -33,6 +33,7 @@ const Box = styled.div`
     font-family: ${theme.fonts.sansSerif};
     background-image: url(${bg});
     background-size: cover;
+    background-position: center;
     filter: blur(${blur ? '25px' : '0px'});
     transition: ${!blur ? 'filter 0.6s ease-out' : 'none'};
   `}

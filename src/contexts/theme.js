@@ -32,7 +32,9 @@ const colorThemes = {
     primary: "#1E90FF",
     border: "rgba(0, 0, 0, 0.1)",
     codeBackground: "#f5f5f5",
-    codeForeground: "#A159C7"
+    codeForeground: "#A159C7",
+    button: "#f5f5f5",
+    buttonHover: "#efefef"
   },
 
   dark: {
@@ -44,7 +46,9 @@ const colorThemes = {
     primary: "#00aced",
     border: "rgba(255, 255, 255, 0.1)",
     codeBackground: "#212329",
-    codeForeground: "#ffca8b"
+    codeForeground: "#ffca8b",
+    button: "#212329",
+    buttonHover: "#313339"
   }
 };
 
