@@ -48,7 +48,7 @@ const GlobalStyle = ({ theme }) => (
       h4,
       h5,
       h6 {
-        font-weight: 70 ${theme.fontWeights.bold}0;
+        font-weight: ${theme.fontWeights.bold};
         color: ${theme.colors.heading};
         line-height: ${theme.headerLineHeight};
         margin-top: ${theme.baseLineHeight * 2}rem;
