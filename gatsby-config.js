@@ -6,15 +6,15 @@ const gatsbyPluginManifest = require("./gatsby/config/plugins/gatsby-plugin-mani
 const gatsbyPluginGoogleAnalytics = require("./gatsby/config/plugins/gatsby-plugin-google-analytics");
 const gatsbyPluginCanonicalUrls = require("./gatsby/config/plugins/gatsby-plugin-canonical-urls");
 
-const envPlugins = {
-  development: [gatsbySourceFilesystem("drafts")],
-  production: []
-};
+const envPlugins = [];
+if (process.env.NODE_ENV === "development") {
+  envPlugins.concat([gatsbySourceFilesystem("drafts")]);
+}
 
 module.exports = {
   siteMetadata,
   plugins: [
-    ...envPlugins[process.env.NODE_ENVIRONMENT],
+    ...envPlugins,
     gatsbySourceFilesystem("blog"),
     gatsbySourceFilesystem("assets"),
     gatsbyPluginMDX,
