@@ -30,13 +30,14 @@ const Box = styled.div`
     height: 100%;
     width: 100%;
     transition: background-color 0.2s ease-out;
-    background-color: ${theme.colors.codeBackground};
-    font-family: ${theme.fonts.sansSerif};
+    background-color: ${theme.codeBackgroundColor};
+    background-color: var(--codeBackgroundColor);
+    font-family: ${theme.sansSerif};
     background-image: url(${bg});
     background-size: cover;
     background-position: center;
-    filter: blur(${blur ? '25px' : '0px'});
-    transition: ${!blur ? 'filter 0.6s ease-out' : 'none'};
+    filter: blur(${blur ? "25px" : "0px"});
+    transition: ${!blur ? "filter 0.6s ease-out" : "none"};
   `}
 `;
 
@@ -47,7 +48,7 @@ const Img = ({ src, blur, onChange }) => {
     if (typeof onChange === "function") {
       onChange();
     }
-  }, [show])
+  }, [show]);
 
   if (!show) {
     return (
@@ -59,7 +60,7 @@ const Img = ({ src, blur, onChange }) => {
         </ImgContainer>
         <Button onClick={() => setShow(true)}>Load the image</Button>
       </Wrapper>
-    )
+    );
   }
 
   return (
@@ -69,7 +70,7 @@ const Img = ({ src, blur, onChange }) => {
       </ImgContainer>
       <Button onClick={() => setShow(false)}>Reset</Button>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default Img;

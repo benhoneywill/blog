@@ -12,6 +12,8 @@ import { Button } from "./dark-mode-toggle.styles";
 const DarkModeToggle = () => {
   const { darkMode, toggleDarkMode } = useTheme();
 
+  if (darkMode === null) return null;
+
   return (
     <Button
       title="Toggle dark mode"

@@ -85,13 +85,15 @@ const Rail = styled.div`
   transform: translateY(-50%);
   height: 6px;
   border-radius: 3px;
-  background: ${({ theme }) => theme.colors.light};
+  background: ${({ theme }) => theme.lightColor};
+  background: var(--lightColor);
 `;
 
 const InnerRail = styled.div`
   position: absolute;
   height: 100%;
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.primaryColor};
+  background: var(--primaryColor);
   opacity: 0.5;
   left: ${({ left }) => `${left}%`};
   right: ${({ right }) => `${100 - right}%`};
@@ -102,7 +104,8 @@ const Control = styled.div`
   height: ${THUMB_SIZE}px;
   border-radius: 50%;
   position: absolute;
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.primaryColor};
+  background: var(--primaryColor);
   top: 50%;
   margin-left: -${THUMB_SIZE / 2}px;
   transform: translate3d(0, -50%, 0);
@@ -117,7 +120,7 @@ const Control = styled.div`
     top: -${THUMB_SIZE * 2}px;
     left: 50%;
     transform: translateX(-50%);
-    font-family: ${({ theme }) => theme.fonts.sansSerif};
+    font-family: ${({ theme }) => theme.sansSerif};
   }
 `;
 

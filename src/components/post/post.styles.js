@@ -19,8 +19,9 @@ export const ContentWrapper = styled.div`
 
 export const PublishedAt = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.lightText};
-    font-family: ${theme.fonts.sansSerif};
+    color: ${theme.lightTextColor};
+    color: var(--lightTextColor);
+    font-family: ${theme.sansSerif};
     margin-top: ${theme.baseLineHeight / 2}rem;
     margin-bottom: ${theme.baseLineHeight / 2}rem;
   `}
@@ -29,7 +30,8 @@ export const PublishedAt = styled.p`
 export const PostTitle = styled.h5`
   ${({ theme }) => css`
     margin-top: 0;
-    color: ${theme.colors.primary};
+    color: ${theme.primaryColor};
+    color: var(--primaryColor);
     a {
       color: inherit;
     }

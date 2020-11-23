@@ -1,9 +1,6 @@
 import React from "react";
 import Image from "gatsby-image/withIEPolyfill";
 
-// Contexts
-import { useTheme } from "../../contexts/theme";
-
 // Icons
 import TwitterIcon from "../../icons/twitter.svg";
 import LinkedinIcon from "../../icons/linkedin.svg";
@@ -26,7 +23,6 @@ import {
 } from "./bio.styles";
 
 const Bio = () => {
-  const { darkMode } = useTheme();
   const { avatar, site } = useBioQuery();
   const { author, social } = site.siteMetadata;
 
@@ -61,13 +57,13 @@ const Bio = () => {
             },
             {
               href: `https://github.com/${social.github}`,
-              color: darkMode ? "rgba(255, 255, 255, 0.8)" : "#333333",
+              color: "var(--textColor)",
               Icon: GithubIcon,
               title: "Github"
             },
             {
               href: `https://linkedin.com/in/${social.linkedin}`,
-              color: darkMode ? "#00a0dc" : "#0072bb",
+              color: "#0072bb",
               Icon: LinkedinIcon,
               title: "Linkedin"
             }

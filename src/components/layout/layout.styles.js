@@ -41,11 +41,11 @@ export const DarkModeToggleWrapper = styled.div`
 export const BackLink = styled(Link)`
   ${({ theme }) => css`
     font-size: ${theme.baseLineHeight / theme.headerLineHeight}rem;
-    font-weight: ${theme.fontWeights.bold};
+    font-weight: ${theme.boldFontWeight};
     line-height: ${theme.baseLineHeight};
     margin: 0;
     line-height: 1;
-    font-family: ${theme.fonts.sansSerif};
+    font-family: ${theme.sansSerif};
     text-decoration: none;
   `}
 `;

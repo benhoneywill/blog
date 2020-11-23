@@ -8,14 +8,16 @@ export const ArticleWrapper = styled.article`
     position: relative;
     margin: ${theme.baseLineHeight * 2}rem auto;
     padding-bottom: ${theme.baseLineHeight}rem;
-    border-bottom: 1px solid ${theme.colors.border};
+    border-bottom: 1px solid ${theme.borderColor};
+    border-bottom: 1px solid var(--borderColor);
   `}
 `;
 
 export const PublishedAt = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.lightText};
-    font-family: ${theme.fonts.sansSerif};
+    color: ${theme.lightTextColor};
+    color: var(--lightTextColor);
+    font-family: ${theme.sansSerif};
     margin-bottom: 0;
   `}
 `;
@@ -70,7 +72,7 @@ export const ShareLink = styled.a`
     width: ${theme.baseLineHeight}rem;
     margin-bottom: -${theme.baseLineHeight * 2}rem;
     opacity: ${show ? 0.9 : 0};
-    pointer-events: ${show ? 'auto' : 'none'};
+    pointer-events: ${show ? "auto" : "none"};
     transition: opacity 0.2s ease;
 
     &:hover {

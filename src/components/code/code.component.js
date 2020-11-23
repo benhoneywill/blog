@@ -1,39 +1,40 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
+import darkModeTheme from "prism-react-renderer/themes/nightOwl";
+import lightModeTheme from "prism-react-renderer/themes/nightOwlLight";
 
 // Contexts
 import { useTheme } from "../../contexts/theme";
 
-// Themes
-import { getCodeTheme } from "./code.config";
-
 // Styles
-import { Token } from "./code.styles";
+import { Token, Pre } from "./code.styles";
 
 const Code = ({ codeString, language }) => {
-  const { darkMode, theme } = useTheme();
-  const codeTheme = getCodeTheme({ theme, darkMode });
+  const { darkMode } = useTheme();
 
   return (
     <Highlight
       {...defaultProps}
       code={codeString}
       language={language}
-      theme={codeTheme}
+      theme={darkMode ? darkModeTheme : lightModeTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={style}>
+        <Pre className={className} style={style}>
           <code>
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (
-                  <Token {...getTokenProps({ token, key })} />
+                  <Token
+                    loaded={darkMode !== null}
+                    {...getTokenProps({ token, key })}
+                  />
                 ))}
               </div>
             ))}
           </code>
-        </pre>
+        </Pre>
       )}
     </Highlight>
   );

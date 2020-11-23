@@ -15,8 +15,10 @@ export const List = styled.div`
 export const Tag = styled(Link)`
   ${({ theme }) => css`
     text-decoration: none;
-    background-color: ${theme.colors.border};
-    color: ${theme.colors.text};
+    background-color: ${theme.borderColor};
+    background-color: var(--borderColor);
+    color: ${theme.textColor};
+    color: var(--textColor);
     display: inline-flex;
     align-items: center;
     padding: 0 15px;
@@ -24,8 +26,8 @@ export const Tag = styled(Link)`
     border-radius: 4px;
     font-size: 0.75rem;
     margin: 0 0.5rem 0.5rem 0;
-    font-family: ${theme.fonts.sansSerif};
-    font-weight: ${theme.fontWeights.bold};
+    font-family: ${theme.sansSerif};
+    font-weight: ${theme.boldFontWeight};
     transition: opacity 0.1s ease-in-out;
 
     &:hover {
