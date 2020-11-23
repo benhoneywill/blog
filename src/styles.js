@@ -10,6 +10,7 @@ export const appTheme = {
   headingLineHeight: 1.2,
   serif: `"Lora", Georgia, serif`,
   sansSerif: `"lato", ‘Helvetica Neue’, Helvetica, Arial, sans-serif`,
+  monospace: `"Fira Code", monospace`,
   normalFontWeight: 400,
   boldFontWeight: 700,
 
@@ -182,7 +183,7 @@ const GlobalStyle = ({ theme }) => (
         color: var(--codeForegroundColor);
         background-color: ${theme.codeBackgroundColor};
         background-color: var(--codeBackgroundColor);
-        font-family: monospace;
+        font-family: ${theme.monospace};
         padding: 0 3px;
         border-radius: 2px;
         transition: background 0.2s ease-out, color 0.2s ease-out;
@@ -243,6 +244,7 @@ GlobalStyle.propTypes = {
 
     serif: PropTypes.string.isRequired,
     sansSerif: PropTypes.string.isRequired,
+    monospace: PropTypes.string.isRequired,
 
     normalFontWeight: PropTypes.number.isRequired,
     boldFontWeight: PropTypes.number.isRequired,
