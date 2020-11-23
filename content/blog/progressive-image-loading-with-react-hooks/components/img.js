@@ -48,7 +48,7 @@ const Img = ({ src, blur, onChange }) => {
     if (typeof onChange === "function") {
       onChange();
     }
-  }, [show, onChange]);
+  }, [show]);
 
   if (!show) {
     return (

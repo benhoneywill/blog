@@ -24,7 +24,7 @@ export const PublishedAt = styled.p`
 
 export const MarkdownWrapper = styled.div`
   ${({ theme }) => css`
-    margin-bottom: ${theme.baseLineHeight * 4}rem;
+    margin-bottom: ${theme.baseLineHeight * 2}rem;
   `}
 `;
 
@@ -48,6 +48,7 @@ export const CenteredParagraph = styled.p`
   ${({ theme, margin }) => css`
     text-align: center;
     margin: ${margin * theme.baseLineHeight}rem 0;
+    font-family: ${theme.sansSerif};
   `}
 `;
 

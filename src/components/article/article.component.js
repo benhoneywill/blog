@@ -5,6 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 
 // Components
 import Bio from "../bio";
+import Comments from "../comments";
 import Tags from "../tags";
 import Container from "../container";
 import Emoji from "../emoji";
@@ -31,17 +32,17 @@ const Article = ({ post }) => {
   const [showShareLink, setShowShareLink] = React.useState(false);
 
   React.useEffect(() => {
-    const handleScroll = (e) => {
+    const handleScroll = () => {
       if (window.pageYOffset > 800) {
         setShowShareLink(true);
       } else {
         setShowShareLink(false);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const tweetMsg = `${post.frontmatter.title}\n\n${post.frontmatter.tagline}\n\nBy @benhoneywill\n\n${siteUrl}${post.fields.slug}`;
   const tweetUrl = `https://twitter.com/intent/tweet?text=${escape(tweetMsg)}`;
@@ -81,7 +82,12 @@ const Article = ({ post }) => {
           <Tags align="center" tags={post.frontmatter.tags} />
 
           <CenteredParagraph>
-            <Emoji emoji="💬" label="Comment" />{" "}
+            <TwitterIcon
+              fill="#00acee"
+              height="1em"
+              width="1em"
+              style={{ transform: "translateY(0.1em)", marginRight: "0.3em" }}
+            />
             <a
               rel="noreferrer"
               target="_blank"
@@ -89,18 +95,20 @@ const Article = ({ post }) => {
                 `${siteUrl}${post.fields.slug}`
               )}`}
             >
-              Comment on this article with Twitter
+              Discuss this article on Twitter
             </a>
           </CenteredParagraph>
+
+          <Comments title={post.frontmatter.title} />
         </Container>
       </ArticleWrapper>
 
       <Container>
         <Bio />
 
-        <CenteredParagraph margin={2}>
-          <Emoji emoji="📖" label="Book" />{" "}
-          <Link to="/">Read more of my articles</Link>
+        <CenteredParagraph>
+          <Emoji emoji="🏠" label="Home" />{" "}
+          <Link to="/">Back to home page</Link>
         </CenteredParagraph>
       </Container>
     </>
