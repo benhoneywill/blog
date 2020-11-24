@@ -7,7 +7,6 @@ export const ArticleWrapper = styled.article`
   ${({ theme }) => css`
     position: relative;
     margin: ${theme.baseLineHeight * 2}rem auto;
-    padding-bottom: ${theme.baseLineHeight}rem;
     border-bottom: 1px solid ${theme.borderColor};
     border-bottom: 1px solid var(--borderColor);
   `}
