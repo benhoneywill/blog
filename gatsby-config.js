@@ -7,7 +7,7 @@ const gatsbyPluginCanonicalUrls = require("./gatsby/config/plugins/gatsby-plugin
 
 const envPlugins = [];
 if (process.env.NODE_ENV === "development") {
-  envPlugins.concat([gatsbySourceFilesystem("drafts")]);
+  envPlugins.push(gatsbySourceFilesystem("drafts"));
 }
 
 module.exports = {

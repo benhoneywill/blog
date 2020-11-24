@@ -50,7 +50,7 @@ const Comments = () => {
   return (
     <CommentsContainer>
       <h5>
-        <Emoji emoji="💬" label="Comment" /> Leave a comment with GitHub
+        <Emoji emoji="💬" label="Comment" /> Comment with GitHub
       </h5>
       {loading && <LoadingText>Loading comments...</LoadingText>}
       <CommentsWrapper ref={ref} />

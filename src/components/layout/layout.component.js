@@ -5,9 +5,6 @@ import PropTypes from "prop-types";
 import Head from "../head";
 import DarkModeToggle from "../dark-mode-toggle";
 
-// Components
-import Emoji from "../emoji";
-
 // Styles
 import {
   Header,
@@ -30,8 +27,7 @@ const Layout = ({ children, hero, location, ...headProps }) => {
         <Wrapper isHomePage={isHomePage}>
           {!isHomePage && (
             <BackLink title="Home" to="/">
-              <ArrowLeftIcon />
-              <Emoji emoji="🏠" label="Home" />
+              <ArrowLeftIcon height="1.6rem" width="1.6rem" />
             </BackLink>
           )}
           <DarkModeToggleWrapper>
