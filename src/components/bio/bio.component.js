@@ -39,9 +39,9 @@ const Bio = () => {
           <a
             rel="noreferrer"
             target="_blank"
-            href="https://twitter.com/LushLtd"
+            href="https://twitter.com/KrystalHosting"
           >
-            @LushLtd
+            @KrystalHosting
           </a>
           . Web development <Emoji emoji="❤️" label="Heart" /> JavaScript{" "}
           <Emoji emoji="🤘" label="Awesome" />
