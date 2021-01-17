@@ -21,7 +21,7 @@ const NotFound = ({ location, data }) => {
         }
       />
       <Container maxWidth="1250px">
-        <SectionHeading>Blog Posts</SectionHeading>
+        <SectionHeading>Looking for a blog post?</SectionHeading>
         <Posts posts={data.posts.edges} />
       </Container>
     </Layout>
@@ -44,7 +44,13 @@ NotFound.propTypes = {
 
 export const fourOhFourQuery = graphql`
   query {
-    posts: allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    posts: allMdx(
+      filter: {
+        fields: { source: { eq: "blog" } }
+        frontmatter: { published: { eq: true } }
+      }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           fields {
