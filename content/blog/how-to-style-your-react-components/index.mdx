@@ -3,6 +3,7 @@ title: How to Style Your React Components
 date: 2020-03-24
 tagline: CSS Modules, Styled Components, Or maybe just CSS? Let's break it down.
 image: ./styling-react.png
+published: true
 tags:
   - React
   - CSS
@@ -13,11 +14,11 @@ With all of the different options available to us for styling our React componen
 
 ### Contents
 
-* [CSS](#css)
-* [Inline Styles](#inline-styles)
-* [CSS Modules](#css-modules)
-* [CSS in JS](#css-in-js)
-* [TLDR](#tldr)
+- [CSS](#css)
+- [Inline Styles](#inline-styles)
+- [CSS Modules](#css-modules)
+- [CSS in JS](#css-in-js)
+- [TLDR](#tldr)
 
 <a name="css"></a>
 
@@ -29,13 +30,13 @@ The first option available to all React developers for styling our components is
 
 ##### Ease of use
 
-We often over-complicate things by reaching for fancy solutions to problems we don't have. CSS is one of the fundamental building blocks of the web, which means that you don't have to worry about npm package versions or complicated build processes. You just have to link to your CSS file in the head of your HTML page and *voila*, you are ready to go.
+We often over-complicate things by reaching for fancy solutions to problems we don't have. CSS is one of the fundamental building blocks of the web, which means that you don't have to worry about npm package versions or complicated build processes. You just have to link to your CSS file in the head of your HTML page and _voila_, you are ready to go.
 
 ```html
 <html>
   <head>
     <!-- That was easy! -->
-    <link href="main.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
@@ -51,7 +52,7 @@ When it comes to some of the other styling methods in this article, you would be
 
 ##### No access to the power of JS
 
-We are writing React applications, and as such we want to be able to utilise the power of JavaScript wherever possible! *CSS in JS* libraries provide some really useful features that allow us to compute CSS properties using JavaScript right inside of our style declarations, but with vanilla CSS we have to do everything via HTML classes.
+We are writing React applications, and as such we want to be able to utilise the power of JavaScript wherever possible! _CSS in JS_ libraries provide some really useful features that allow us to compute CSS properties using JavaScript right inside of our style declarations, but with vanilla CSS we have to do everything via HTML classes.
 
 This means that to change styles based on props, you have to write some quite verbose code to change the `className` of an element.
 
@@ -72,14 +73,10 @@ const Button = props => {
   }
 
   if (props.color) {
-    classNames.push(`button--${props.color}`); 
+    classNames.push(`button--${props.color}`);
   }
 
-  return (
-    <button className={classNames.join(" ")}>
-      Click me
-    </button>
-  );
+  return <button className={classNames.join(" ")}>Click me</button>;
 };
 ```
 
@@ -125,7 +122,7 @@ to use of all the methods described in this post but is also the most limited.
 
 ##### Quick to set up and use
 
-Inline Styles require no configuration, they are built straight into React. You can simply pass your styles directly to an element via the `style` prop, which should be a JavaScript object whose keys are the *camelCased* version of the style name.
+Inline Styles require no configuration, they are built straight into React. You can simply pass your styles directly to an element via the `style` prop, which should be a JavaScript object whose keys are the _camelCased_ version of the style name.
 
 ```js
 import React from "react";
@@ -180,10 +177,10 @@ This point is subjective I admit, but I find the JavaScript object notation and 
 
 This is the biggest drawback to using Inline Styles. Here is a list of some of the CSS features that are unsupported when using Inline Styles:
 
-* Media queries
-* Keyframe animations
-* Pseudo-elements (`:after`, `:before`)
-* pseudo-selectors (`:hover`, `:focus`)
+- Media queries
+- Keyframe animations
+- Pseudo-elements (`:after`, `:before`)
+- pseudo-selectors (`:hover`, `:focus`)
 
 The absence of media queries alone is a deal-breaker for any application that needs to be responsive, and you don't want to have to start handling mouse and focus events to style hover and focus states when this is so easy to do in CSS.
 
@@ -226,7 +223,7 @@ const Box = () => (
 );
 ```
 
-When importing a CSS Module from a JavaScript file, it exports an object with keys matching the classes declared within the written CSS. The values of these keys, however, are unique, which means that your CSS is automatically scoped locally to your component for you. 
+When importing a CSS Module from a JavaScript file, it exports an object with keys matching the classes declared within the written CSS. The values of these keys, however, are unique, which means that your CSS is automatically scoped locally to your component for you.
 
 ### What's so good about CSS Modules?
 
@@ -268,7 +265,7 @@ CSS Modules do suffer from one problem in the same way as plain CSS: you can not
 
 ## CSS in JS
 
-**CSS in JS** is an umbrella term used to describe JavaScript libraries that allow you to declare your CSS inside of your JavaScript files, similar to Inline Styles, but with added benefits. I'm going to show you the most popular one, *Styled Components*, but it's worth bearing in mind there are many more ([Emotion](https://github.com/emotion-js/emotion), [JSS](https://github.com/cssinjs/jss), [Aphrodite](https://github.com/Khan/aphrodite), etc.)
+**CSS in JS** is an umbrella term used to describe JavaScript libraries that allow you to declare your CSS inside of your JavaScript files, similar to Inline Styles, but with added benefits. I'm going to show you the most popular one, _Styled Components_, but it's worth bearing in mind there are many more ([Emotion](https://github.com/emotion-js/emotion), [JSS](https://github.com/cssinjs/jss), [Aphrodite](https://github.com/Khan/aphrodite), etc.)
 
 ### Styled Components
 
@@ -315,7 +312,7 @@ const rotate = keyframes`
 const Rotating = styled.div`
   animation: ${rotate} 2s linear infinite;
 
-  @media(max-width: 500px) {
+  @media (max-width: 500px) {
     display: none;
   }
 `;
@@ -333,8 +330,8 @@ import styled from "styled-components";
 
 const StyledButton = styled.button`
   background: ${props => props.color};
-  font-size: ${props => props.large ? "18px" : "14px"};
-  border-radius: ${props => props.rounded ? "10px" : "0"};
+  font-size: ${props => (props.large ? "18px" : "14px")};
+  border-radius: ${props => (props.rounded ? "10px" : "0")};
 `;
 
 const BigRoundBlueButton = () => <StyledButton color="blue" large rounded />;
@@ -364,11 +361,11 @@ const App = () => (
 
 Unlike with plain CSS your styles are tightly scoped to the component that you create when you declare them, solving the global namespace problem we've talked about previously.
 
-In fact, Styled Components even goes one step further. Rather than just creating CSS you are also creating the actual React components that become part of your application. This makes this library perfect for building UI libraries or creating atomic components that you want to use throughout your application. 
+In fact, Styled Components even goes one step further. Rather than just creating CSS you are also creating the actual React components that become part of your application. This makes this library perfect for building UI libraries or creating atomic components that you want to use throughout your application.
 
 ##### Automatic critical CSS
 
-Styled Components is also very smart and makes a lot of optimisations to your application's code to improve perceived performance. One of these optimisations that I'd like to draw your attention to (because it's so cool), is that Styled Components will *automatically* inline the CSS for the above-the-fold content on your webpage.
+Styled Components is also very smart and makes a lot of optimisations to your application's code to improve perceived performance. One of these optimisations that I'd like to draw your attention to (because it's so cool), is that Styled Components will _automatically_ inline the CSS for the above-the-fold content on your webpage.
 
 > styled-components keeps track of which components are rendered on a page and injects their styles and nothing else, fully automatically. Combined with code splitting, this means your users load the least amount of code necessary.
 > [<cite>Styled Components' documentation</cite>](https://styled-components.com/docs/basics)
@@ -387,10 +384,10 @@ It's also worth mentioning that the landscape of CSS in JS libraries is quite tu
 
 We've analysed 4 different methods of styling your React components. CSS, Inline Styles, CSS Modules, and CSS in JS (styled-components).
 
-* **CSS Modules** provide a great balance between being future proof and being useful. They help you write modular styles by keeping the class names of your CSS locally scoped to a component.
+- **CSS Modules** provide a great balance between being future proof and being useful. They help you write modular styles by keeping the class names of your CSS locally scoped to a component.
 
-* **Styled Components** will give you the most functionality, as well as great optimisation features and access to the rich ecosystem of CSS in JS libraries. This is at the cost of taking over your application. Your app will become as much a Styled Components app as it is a React app. It is worth also looking at some other CSS in JS libraries (I like [Emotion](https://github.com/emotion-js/emotion) a lot!)
+- **Styled Components** will give you the most functionality, as well as great optimisation features and access to the rich ecosystem of CSS in JS libraries. This is at the cost of taking over your application. Your app will become as much a Styled Components app as it is a React app. It is worth also looking at some other CSS in JS libraries (I like [Emotion](https://github.com/emotion-js/emotion) a lot!)
 
-* **Plain CSS** is great if you want to keep things simple, but be aware that when writing styles for a componentized application in CSS a consistent class naming methodology is a necessity - try BEM.
+- **Plain CSS** is great if you want to keep things simple, but be aware that when writing styles for a componentized application in CSS a consistent class naming methodology is a necessity - try BEM.
 
-* **Inline Styles** are great for quick demo projects or proof of concepts but the lack of essential CSS features like media queries means that another option is almost always preferable.
+- **Inline Styles** are great for quick demo projects or proof of concepts but the lack of essential CSS features like media queries means that another option is almost always preferable.

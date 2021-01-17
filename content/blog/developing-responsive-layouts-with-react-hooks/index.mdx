@@ -4,12 +4,13 @@ date: 2020-02-21
 tagline: Written for LogRocket. A practical introduction to React Hooks.
 external_link: https://blog.logrocket.com/developing-responsive-layouts-with-react-hooks/
 image: ./responsive-react-hooks.png
+published: true
 tags:
   - React
   - JavaScript
 ---
 
-CSS is the perfect tool when it comes to creating responsive websites and apps, that’s not going to change any time soon. However, sometimes in a React application you need to conditionally render different components depending on the screen size. 
+CSS is the perfect tool when it comes to creating responsive websites and apps, that’s not going to change any time soon. However, sometimes in a React application you need to conditionally render different components depending on the screen size.
 
 Wouldn’t it be great if instead of having to reach for CSS and media queries we could create these responsive layouts right in our React code? Let’s take a quick look at a naive implementation of something like this, to see exactly what I mean.
 
@@ -19,28 +20,27 @@ const MyComponent = () => {
   const width = window.innerWidth;
   // The width below which the mobile view should be rendered
   const breakpoint = 620;
-  
+
   /* If the viewport is more narrow than the breakpoint render the
      mobile component, else render the desktop component */
   return width < breakpoint ? <MobileComponent /> : <DesktopComponent />;
-}
+};
 ```
 
 This simple solution will certainly work. Depending on the window width of the user’s device we render either the desktop or mobile view. But there is a big problem, when the window is resized the width value is not updated, and the wrong component could be rendered!
 
-We are going to use React Hooks to create an elegant, and more importantly **reusable**, solution to this problem of creating responsive layouts in React. If you haven’t used React Hooks extensively yet, this should be a great introduction and demonstration of the flexibility and power that Hooks can provide. 
-
+We are going to use React Hooks to create an elegant, and more importantly **reusable**, solution to this problem of creating responsive layouts in React. If you haven’t used React Hooks extensively yet, this should be a great introduction and demonstration of the flexibility and power that Hooks can provide.
 
 ## Initial implementation using Hooks
 
-The problem with the example shown above is that when the window is resized the value of  `width` is not updated. In order to solve this issue, we can keep track of `width` in React state and use a `useEffect` Hook to listen for changes in the width of the window.
+The problem with the example shown above is that when the window is resized the value of `width` is not updated. In order to solve this issue, we can keep track of `width` in React state and use a `useEffect` Hook to listen for changes in the width of the window.
 
 ```js
 const MyComponent = () => {
   // Declare a new state variable with the "useState" Hook
   const [width, setWidth] = React.useState(window.innerWidth);
   const breakpoint = 620;
-  
+
   React.useEffect(() => {
     /* Inside of a "useEffect" hook add an event listener that updates
         the "width" state variable when the window size changes */
@@ -52,7 +52,7 @@ const MyComponent = () => {
   }, []);
 
   return width < breakpoint ? <MobileComponent /> : <DesktopComponent />;
-}
+};
 ```
 
 Now whenever the window is resized the `width` state variable is updated to equal the new viewport width, and our component will re-render to show the correct component responsively. So far so good!
@@ -65,7 +65,7 @@ const MyComponent = () => {
   const breakpoint = 620;
 
   React.useEffect(() => {
-    const handleWindowResize = () => setWidth(window.innerWidth)
+    const handleWindowResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
 
     // Return a function from the effect that removes the event listener
@@ -73,13 +73,12 @@ const MyComponent = () => {
   }, []);
 
   return width < breakpoint ? <MobileComponent /> : <DesktopComponent />;
-}
+};
 ```
 
-This is looking good now, our component listens to the window resize event and will render the appropriate content depending on the viewport width. It also cleans up by removing the no longer needed event listener when it un-mounts. 
+This is looking good now, our component listens to the window resize event and will render the appropriate content depending on the viewport width. It also cleans up by removing the no longer needed event listener when it un-mounts.
 
 This is a good implementation for a single component, but we most likely want to use this functionality elsewhere in our app as well, and we certainly don’t want to have to rewrite this logic over and over again every time!
-
 
 ## Making the logic reusable with a custom Hook
 
@@ -94,10 +93,10 @@ const useViewport = () => {
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
-  
+
   // Return the width so we can use it in our components
   return { width };
-}
+};
 ```
 
 You’ve probably noticed that the code above is almost identical to the code we wrote before, we have simply extracted the logic into its own function which we can now reuse. Hooks are simply functions composed of other hooks, such as `useEffect`, `useState`, or any other custom Hooks you have written yourself.
@@ -110,7 +109,7 @@ const MyComponent = () => {
   const breakpoint = 620;
 
   return width < breakpoint ? <MobileComponent /> : <DesktopComponent />;
-}
+};
 ```
 
 And not only can we use the `useViewport` Hook here, we can use it in any component that needs to be responsive!
@@ -128,19 +127,18 @@ const useViewport = () => {
       setWidth(window.innerWidth);
       // Set the height in state as well as the width
       setHeight(window.innerHeight);
-    }
+    };
 
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
-  
+
   // Return both the height and width
   return { width, height };
-}
+};
 ```
 
 That was pretty easy! This Hook is working well now, but there is still room for improvement. Currently, every component that uses this Hook will create a brand new event listener for the window resize event. This is wasteful, and could cause performance issues if the Hook were to be used in a lot of different components at once. It would be much better if we could get the Hook to rely on a single resize event listener that the entire app could share.
-
 
 ## Optimizing performance with React Context
 
@@ -158,13 +156,13 @@ const ViewportProvider = ({ children }) => {
   const handleWindowResize = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
-  }
+  };
 
   React.useEffect(() => {
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
-  
+
   /* Now we are dealing with a context instead of a Hook, so instead
      of returning the width and height we store the values in the
      value of the Provider */
@@ -182,7 +180,7 @@ const useViewport = () => {
      another Hook, remember, Hooks are composable! */
   const { width, height } = React.useContext(viewportContext);
   return { width, height };
-}
+};
 ```
 
 Make sure you also wrap the root of your application in the new `ViewportProvider`, so that the newly rewritten `useViewport` Hook will have access to the Context when used further down in the component tree.
@@ -194,7 +192,7 @@ const App = () => {
       <AppComponent />
     </ViewportProvider>
   );
-}
+};
 ```
 
 And that should do it! You can still use the `useViewport` Hook in exactly the same way as before, but now all the data and logic is kept in a single tidy location, and only one resize event listener is added for the entire application.
@@ -205,21 +203,18 @@ const MyComponent = () => {
   const breakpoint = 620;
 
   return width < breakpoint ? <MobileComponent /> : <DesktopComponent />;
-}
+};
 ```
 
 Easy peasy. Performant, elegant, and reusable responsive layouts with React Hooks.
-
 
 ## Other considerations
 
 Our Hook is working but that doesn’t mean we should stop working on it! There are still some improvements that could be made, but they fall outside the scope of this post. If you want to get extra credit (although no one is counting) here are some ideas for things you could do to improve this Hook even further:
 
-
 - Improving performance by throttling the window resize event listener so that there are less re-renders while resizing the browser window.
 - Edit the Hook so that it supports server side rendering. This could be achieved by checking `window` exists before trying to access it.
 - The `Window.matchMedia` browser API could provide a better solution to this problem than checking the width of the window. The Hook could be extended to support this too.
-
 
 ## That’s all for now folks
 

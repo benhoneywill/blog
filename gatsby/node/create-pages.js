@@ -1,7 +1,14 @@
 const path = require("path");
 
 const blogPostsQuery = `{
-  allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
+  allMdx(
+    filter: {
+      frontmatter: { published: { eq: true } }
+      fields: { source: { eq: "blog" } }
+    },
+    sort: { fields: [frontmatter___date], order: DESC },
+    limit: 1000
+  ) {
     edges {
       node {
         id
@@ -16,7 +23,13 @@ const blogPostsQuery = `{
 }`;
 
 const tagsQuery = `{
-  tagsGroup: allMdx(limit: 1000) {
+  tagsGroup: allMdx(
+    filter: {
+      frontmatter: { published: { eq: true } },
+      fields: { source: { eq: "blog" } }
+    },
+    limit: 1000
+  ) {
     group(field: frontmatter___tags) {
       fieldValue
     }

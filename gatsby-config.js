@@ -5,16 +5,12 @@ const gatsbyPluginReactSVG = require("./gatsby/config/plugins/gatsby-plugin-reac
 const gatsbyPluginManifest = require("./gatsby/config/plugins/gatsby-plugin-manifest");
 const gatsbyPluginCanonicalUrls = require("./gatsby/config/plugins/gatsby-plugin-canonical-urls");
 
-const envPlugins = [];
-if (process.env.NODE_ENV === "development") {
-  envPlugins.push(gatsbySourceFilesystem("drafts"));
-}
-
 module.exports = {
   siteMetadata,
   plugins: [
-    ...envPlugins,
+    `gatsby-plugin-mdx-source-name`,
     gatsbySourceFilesystem("blog"),
+    gatsbySourceFilesystem("projects"),
     gatsbySourceFilesystem("assets"),
     gatsbyPluginMDX,
     `gatsby-transformer-sharp`,

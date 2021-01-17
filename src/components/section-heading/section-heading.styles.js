@@ -16,5 +16,6 @@ export const Wrapper = styled.h5`
     border-bottom: 1px solid var(--borderColor);
     padding-bottom: ${theme.baseLineHeight * 0.25}rem;
     margin-bottom: ${theme.baseLineHeight * 0.75}rem;
+    margin-top: ${theme.baseLineHeight * 0.5}rem;
   `}
 `;

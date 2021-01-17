@@ -3,6 +3,7 @@ title: Progressive Image Loading with React Hooks
 date: 2020-07-19
 tagline: Improve the perceived load times of your large images.
 image: ./image-loading.png
+published: true
 tags:
   - React
   - JavaScript
@@ -10,19 +11,19 @@ tags:
 
 Last week I was building a web page for our e-commerce site, the design had a really beautiful large
 hero image that took up half the width of the screen. After implementing the design I noticed
-that on slower internet connections this beautiful large image loaded *very* slowly.
+that on slower internet connections this beautiful large image loaded _very_ slowly.
 
-The designer intended any user's first impression of this page to be __Wow, look at that beautiful imagery__.
+The designer intended any user's first impression of this page to be **Wow, look at that beautiful imagery**.
 Unfortunately as the image was so large they were instead presented with a bland page while it loaded.
 
 ##### An example of the problem
 
-import ProblemExample from './components/problem-example';
+import ProblemExample from "./components/problem-example";
 
 <ProblemExample />
 
 Hopefully you can see that the image loads quite slowly. If not then... congratulations on your super-fast
-internet connection! Hopefully you can still follow along by *imagining* it was slow to load.
+internet connection! Hopefully you can still follow along by _imagining_ it was slow to load.
 
 ##### How to solve this problem?
 
@@ -36,7 +37,7 @@ result is pretty good.
 
 Below is an example of the finished product. Compare it to the slow version above, what do you think?
 
-import FinishedExample from './components/finished-example';
+import FinishedExample from "./components/finished-example";
 
 <FinishedExample />
 
@@ -50,7 +51,7 @@ Whenever I am working in React and want something reusable I think "Could I make
 Check out the code below.
 
 ```js
-import React from 'react';
+import React from "react";
 
 const useProgressiveImg = (lowQualitySrc, highQualitySrc) => {
   const [src, setSrc] = React.useState(lowQualitySrc);
@@ -77,7 +78,7 @@ This is a hook which accepts two arguments: a low-quality image `src`, and a hig
 By default this hook will return the `src` of the low-quality pixelated image.
 Once the higher quality image has loaded, it will return that instead.
 This is achieved by adding an event listener to a new `Image` object. The `src` attribute of this `Image`
-is set to the `src` of our __high quality image__, so the event listener fires once the full-size image has loaded.
+is set to the `src` of our **high quality image**, so the event listener fires once the full-size image has loaded.
 
 Once that image has loaded we switch from returning the pixelated image to returning the full-size image.
 
@@ -95,26 +96,19 @@ import React from "react";
 import useProgressiveImg from "./useProgressiveImg";
 
 const BlurredUpImage = () => {
-  const [src, { blur }] = useProgressiveImg(
-    "./tiny.jpg",
-    "./large.jpg"
-  );
+  const [src, { blur }] = useProgressiveImg("./tiny.jpg", "./large.jpg");
 
   return (
     <img
       src={src}
       style={{
         width: 200,
-        filter: blur
-          ? "blur(20px)"
-          : "none",
-        transition: blur
-          ? "none"
-          : "filter 0.3s ease-out"
+        filter: blur ? "blur(20px)" : "none",
+        transition: blur ? "none" : "filter 0.3s ease-out"
       }}
     />
-  )
-}
+  );
+};
 ```
 
 In this example `tiny.jpg` should be a very small version of the full-size image `large.jpg`.

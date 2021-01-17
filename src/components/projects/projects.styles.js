@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   `}
 `;
 
-export const PostItem = styled.div`
+export const ProjectItem = styled.div`
   ${({ theme }) => css`
     flex: 0 0 33.333%;
     max-width: 33.333%;
