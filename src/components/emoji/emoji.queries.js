@@ -20,7 +20,6 @@ const getEmojiImgFromQueryData = (emoji, data) => {
   const name = emojiMap[emoji];
   const emojiData =
     data.emoji.edges.find(({ node }) => node.name === name) || {};
-  console.log(name, emojiData);
   return emojiData.node ? emojiData.node.childImageSharp : null;
 };
 
