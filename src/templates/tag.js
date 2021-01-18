@@ -60,7 +60,9 @@ export const tagQuery = graphql`
   query($slug: String!) {
     posts: allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$slug] } } }
+      filter: {
+        frontmatter: { tags: { in: [$slug] }, published: { eq: true } }
+      }
     ) {
       edges {
         node {
