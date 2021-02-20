@@ -46,10 +46,16 @@ export const LoadingText = styled.p`
   `}
 `;
 
-export const HeadingSpan = styled.span`
-  margin-left: 36px;
-
-  @media (max-width: 579px) {
-    margin-left: 16px;
+export const Heading = styled.h5`
+  span:first-child {
+    transform: translateY(1.5px);
   }
+
+  @media (min-width: 580px) {
+    margin-left: 20px;
+  }
+`;
+
+export const HeadingTitle = styled.span`
+  margin-left: 16px;
 `;

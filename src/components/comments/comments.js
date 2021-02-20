@@ -6,7 +6,8 @@ import {
   CommentsContainer,
   LoadingText,
   CommentsWrapper,
-  HeadingSpan
+  Heading,
+  HeadingTitle
 } from "./comments.styles";
 
 const Comments = () => {
@@ -50,10 +51,10 @@ const Comments = () => {
 
   return (
     <CommentsContainer>
-      <h5>
+      <Heading>
         <Emoji emoji="💬" label="Comment" />
-        <HeadingSpan>Comment with GitHub</HeadingSpan>
-      </h5>
+        <HeadingTitle>Comment with GitHub</HeadingTitle>
+      </Heading>
       {loading && <LoadingText>Loading comments...</LoadingText>}
       <CommentsWrapper ref={ref} />
     </CommentsContainer>
