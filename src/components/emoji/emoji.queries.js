@@ -5,7 +5,6 @@ const emojiMap = {
   "📖": "book",
   "💥": "explode",
   "❤️": "heart",
-  "🏠": "house",
   "🤘": "metal",
   "🌙": "moon",
   "📦": "package",

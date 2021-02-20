@@ -107,8 +107,7 @@ const Article = ({ post }) => {
         <Bio />
 
         <CenteredParagraph>
-          <Emoji emoji="🏠" label="Home" />{" "}
-          <Link to="/">Back to home page</Link>
+          <Link to="/">More from me</Link>
         </CenteredParagraph>
       </Container>
     </>
