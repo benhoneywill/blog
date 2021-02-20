@@ -22,14 +22,14 @@ export const appTheme = {
       lightTextColor: "#666666",
       headingColor: "#111111",
       primaryColor: "#1E90FF",
+      primaryContrastColor: "#f1f1f1",
       borderColor: "rgba(0, 0, 0, 0.1)",
       codeBackgroundColor: "#f5f5f5",
       codeForegroundColor: "#A159C7",
-      buttonColor: "#f5f5f5",
-      buttonHoverColor: "#efefef",
       heroColor: "#f3f3f3",
       toggleColor: "#f9f9f9",
-      toggleSliderColor: "#c7c7c7"
+      toggleSliderColor: "#c7c7c7",
+      shadowColor: "rgba(0, 0, 0, 0.3)"
     },
 
     dark: {
@@ -39,14 +39,14 @@ export const appTheme = {
       lightTextColor: "#888888",
       headingColor: "#fefefe",
       primaryColor: "#00aced",
+      primaryContrastColor: "#ffffff",
       borderColor: "rgba(255, 255, 255, 0.1)",
       codeBackgroundColor: "#212329",
       codeForegroundColor: "#ffca8b",
-      buttonColor: "#212329",
-      buttonHoverColor: "#313339",
       heroColor: "#151515",
       toggleColor: "#000000",
-      toggleSliderColor: "#333333"
+      toggleSliderColor: "#333333",
+      shadowColor: "rgba(0, 0, 255, 0.2)"
     }
   }
 };

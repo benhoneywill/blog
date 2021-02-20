@@ -4,27 +4,26 @@ import styled from "@emotion/styled";
 const Button = styled.button`
   ${({ theme }) => css`
     font-family: ${theme.sansSerif};
+    font-weight: ${theme.boldFontWeight};
+    font-size: 1rem;
     height: ${theme.baseLineHeight * 1.5}rem;
-    padding: 0 ${theme.baseLineHeight / 2}rem;
+    padding: 0 ${theme.baseLineHeight}rem;
     border: none;
     cursor: pointer;
-    color: ${theme.textColor};
-    color: var(--textColor);
-    border: 1px solid ${theme.borderColor};
-    border: 1px solid var(--borderColor);
-    background-color: ${theme.buttonColor};
-    background-color: var(--buttonColor);
-    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+    color: ${theme.primaryContrastColor};
+    color: var(--primaryContrastColor);
+    background-color: ${theme.primaryColor};
+    background-color: var(--primaryColor);
+    transition: filter 0.2s ease-out, color 0.2s ease-out;
     border-radius: 3px;
+    box-shadow: ${theme.shadowColor} 0px 3px 8px;
 
     &:hover {
-      background-color: ${theme.buttonHoverColor};
-      background-color: var(--buttonHoverColor);
+      filter: brightness(110%);
     }
 
     &:active {
-      background-color: ${theme.buttonColor};
-      background-color: var(--buttonColor);
+      filter: brightness(90%);
     }
   `}
 `;

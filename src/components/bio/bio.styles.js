@@ -31,22 +31,11 @@ export const Header = styled.h2`
   `}
 `;
 
-const waveAnimation = keyframes`
-  0% { transform: rotate(0) translate3d(0, 5px, 0); }
-  40% { transform: rotate(20deg) translate3d(0, 5px, 0); }
-  50% { transform: rotate(20deg) translate3d(0, 5px, 0); }
-  90% { transform: rotate(0) translate3d(0, 5px, 0); }
-  100% { transform: rotate(0) translate3d(0, 5px, 0); }
-`;
-
 export const Wave = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform-origin: 75% 75%;
-  transform: rotate(0) translate(0, 5px);
-  animation: ${waveAnimation} ease 1s 2;
 `;
 
 export const Text = styled.p`

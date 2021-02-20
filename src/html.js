@@ -1,3 +1,5 @@
+/* eslint-disable react/forbid-prop-types, react/require-default-props, react/no-danger */
+
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -22,31 +24,32 @@ const HTML = ({
       </head>
       <body {...bodyAttributes} className="light">
         <script
-          dangerouslySetInnerHTML={{ // eslint-disable-line
+          dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 window.__onThemeChange = function() {};
+
                 function setTheme(newTheme) {
                   window.__theme = newTheme;
                   preferredTheme = newTheme;
                   document.body.className = newTheme;
                   window.__onThemeChange(newTheme);
                 }
+
                 var preferredTheme;
+
                 try {
                   preferredTheme = localStorage.getItem('theme');
                 } catch (err) { }
+
                 window.__setPreferredTheme = function(newTheme) {
                   setTheme(newTheme);
                   try {
                     localStorage.setItem('theme', newTheme);
                   } catch (err) {}
                 }
-                var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                darkQuery.addListener(function(e) {
-                  window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-                });
-                setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+
+                setTheme(preferredTheme || 'dark');
               })();
             `
           }}
@@ -55,7 +58,7 @@ const HTML = ({
         <div
           key="body"
           id="___gatsby"
-          dangerouslySetInnerHTML={{ // eslint-disable-line
+          dangerouslySetInnerHTML={{
             __html: body
           }}
         />
@@ -65,7 +68,6 @@ const HTML = ({
   );
 };
 
-/* eslint-disable react/forbid-prop-types, react/require-default-props */
 HTML.propTypes = {
   htmlAttributes: PropTypes.object,
   headComponents: PropTypes.array,

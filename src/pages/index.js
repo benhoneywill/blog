@@ -38,18 +38,20 @@ Home.propTypes = {
 
   data: PropTypes.shape({
     tags: PropTypes.shape({
-      group: PropTypes.arrayOf(PropTypes.string).isRequired
+      group: PropTypes.arrayOf(
+        PropTypes.shape({ fieldValue: PropTypes.string.isRequired })
+      ).isRequired
     }).isRequired,
 
     projects: PropTypes.shape({
       edges: PropTypes.arrayOf(
-        PropTypes.shape({ node: PropTypes.object.isRequired })
+        PropTypes.shape({ node: PropTypes.object.isRequired }) // eslint-disable-line
       ).isRequired
     }).isRequired,
 
     posts: PropTypes.shape({
       edges: PropTypes.arrayOf(
-        PropTypes.shape({ node: PropTypes.object.isRequired })
+        PropTypes.shape({ node: PropTypes.object.isRequired }) // eslint-disable-line
       ).isRequired
     }).isRequired
   }).isRequired
