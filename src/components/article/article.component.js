@@ -8,7 +8,6 @@ import Bio from "../bio";
 import Comments from "../comments";
 import Tags from "../tags";
 import Container from "../container";
-import Emoji from "../emoji";
 
 // Icons
 import TwitterIcon from "../../icons/twitter.svg";
@@ -126,7 +125,7 @@ Article.propTypes = {
 
       image: PropTypes.shape({
         childImageSharp: PropTypes.shape({
-          fluid: PropTypes.object.isRequired
+          fluid: PropTypes.object.isRequired // eslint-disable-line
         }).isRequired
       }).isRequired
     }).isRequired,

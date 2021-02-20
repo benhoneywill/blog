@@ -5,7 +5,8 @@ import Emoji from "../emoji";
 import {
   CommentsContainer,
   LoadingText,
-  CommentsWrapper
+  CommentsWrapper,
+  HeadingSpan
 } from "./comments.styles";
 
 const Comments = () => {
@@ -50,7 +51,8 @@ const Comments = () => {
   return (
     <CommentsContainer>
       <h5>
-        <Emoji emoji="💬" label="Comment" /> Comment with GitHub
+        <Emoji emoji="💬" label="Comment" />
+        <HeadingSpan>Comment with GitHub</HeadingSpan>
       </h5>
       {loading && <LoadingText>Loading comments...</LoadingText>}
       <CommentsWrapper ref={ref} />

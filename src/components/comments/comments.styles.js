@@ -45,3 +45,11 @@ export const LoadingText = styled.p`
     }
   `}
 `;
+
+export const HeadingSpan = styled.span`
+  margin-left: 36px;
+
+  @media (max-width: 579px) {
+    margin-left: 16px;
+  }
+`;
