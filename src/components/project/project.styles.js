@@ -46,7 +46,7 @@ export const ProjectActions = styled.div`
   ${({ theme }) => css`
     margin-bottom: 0;
     height: ${theme.baseLineHeight}rem;
-    margin-top: ${theme.baseLineHeight * 0.25}rem;
+    margin-top: ${theme.baseLineHeight / 2}rem;
     display: flex;
     align-items: center;
 
