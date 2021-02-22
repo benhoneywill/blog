@@ -73,6 +73,7 @@ export const homeQuery = graphql`
             title
             link
             description
+            github
             image {
               childImageSharp {
                 fluid(maxWidth: 700) {

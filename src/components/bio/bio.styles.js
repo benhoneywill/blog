@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { css, keyframes } from "@emotion/core";
+import { css } from "@emotion/core";
 
 export const ImageWrapper = styled.div`
   ${({ theme }) => css`
@@ -29,13 +29,6 @@ export const Header = styled.h2`
     max-width: 700px;
     margin-bottom: ${theme.baseLineHeight / 2}rem;
   `}
-`;
-
-export const Wave = styled.div`
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const Text = styled.p`

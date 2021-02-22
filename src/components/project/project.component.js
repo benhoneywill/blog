@@ -1,16 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { useTheme } from "../../contexts/theme";
+import GithubIcon from "../../icons/github.svg";
+
 // Styles
 import {
   ProjectTitle,
   Wrapper,
   ContentWrapper,
   Description,
-  ProjectImage
+  ProjectImage,
+  ProjectActions
 } from "./project.styles";
 
 const Project = ({ project }) => {
+  const { darkMode } = useTheme();
+
   return (
     <Wrapper>
       <a href={project.frontmatter.link} rel="noreferrer" target="_blank">
@@ -27,6 +33,12 @@ const Project = ({ project }) => {
           </a>
         </ProjectTitle>
 
+        <ProjectActions>
+          <a href={project.frontmatter.github} rel="noreferrer" target="_blank">
+            <GithubIcon fill={darkMode ? "#FFFFFF" : "#111111"} />
+          </a>
+        </ProjectActions>
+
         <Description>{project.frontmatter.description}</Description>
       </ContentWrapper>
     </Wrapper>
@@ -39,6 +51,7 @@ Project.propTypes = {
       title: PropTypes.string.isRequired,
       link: PropTypes.string,
       description: PropTypes.string.isRequired,
+      github: PropTypes.string.isRequired,
       image: PropTypes.shape({
         childImageSharp: PropTypes.shape({
           fluid: PropTypes.object.isRequired

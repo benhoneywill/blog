@@ -36,7 +36,7 @@ export const useEmojiQuery = emoji => {
               name
               childImageSharp {
                 fluid(maxWidth: 80) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_noBase64
                 }
               }
             }

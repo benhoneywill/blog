@@ -31,7 +31,7 @@ export const ProjectTitle = styled.h5`
 export const Description = styled.p`
   ${({ theme }) => css`
     margin-bottom: 0;
-    margin-top: ${theme.baseLineHeight / 2.25}rem;
+    margin-top: ${theme.baseLineHeight / 4}rem;
   `}
 `;
 
@@ -39,5 +39,31 @@ export const ProjectImage = styled(Image)`
   ${({ theme }) => css`
     height: ${theme.baseLineHeight * 5}rem;
     border-radius: 3px;
+  `}
+`;
+
+export const ProjectActions = styled.div`
+  ${({ theme }) => css`
+    margin-bottom: 0;
+    height: ${theme.baseLineHeight}rem;
+    margin-top: ${theme.baseLineHeight * 0.25}rem;
+    display: flex;
+    align-items: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      transition: opacity 0.1s ease-in-out;
+      margin-right: 0.5rem;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
   `}
 `;

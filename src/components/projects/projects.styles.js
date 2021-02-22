@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
     margin: 0 -${theme.baseLineHeight / 4}rem;
     margin-top: ${theme.baseLineHeight * marginTop}rem;
+    padding-bottom: ${theme.baseLineHeight / 4}rem;
   `}
 `;
 

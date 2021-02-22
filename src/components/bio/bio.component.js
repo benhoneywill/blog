@@ -15,7 +15,6 @@ import Emoji from "../emoji";
 import {
   Wrapper,
   Header,
-  Wave,
   Text,
   SocialIcons,
   SocialIconItem,
@@ -29,11 +28,7 @@ const Bio = () => {
   return (
     <Wrapper>
       <Header>
-        Hi{" "}
-        <Wave>
-          <Emoji emoji="👋" label="Wave" />
-        </Wave>{" "}
-        I&#39;m Ben.
+        Hi <Emoji emoji="👋" label="Wave" /> I&#39;m Ben.
       </Header>
 
       <Text>
