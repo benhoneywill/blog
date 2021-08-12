@@ -3,14 +3,17 @@ import { css } from "@emotion/core";
 
 export const ImageWrapper = styled.div`
   ${({ theme }) => css`
-    width: 4.8rem;
-    height: 4.8rem;
+    width: ${theme.baseLineHeight * 4}rem;
+    height: ${theme.baseLineHeight * 4}rem;
     flex-shrink: 0;
     margin-bottom: ${theme.baseLineHeight / 2}rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid ${theme.borderColor};
 
     .gatsby-image-wrapper {
-      width: 4.8rem !important;
-      height: 4.8rem !important;
+      width: ${theme.baseLineHeight * 4}rem !important;
+      height: ${theme.baseLineHeight * 4}rem !important;
     }
   `}
 `;
@@ -23,11 +26,16 @@ export const Wrapper = styled.div`
   text-align: center;
 `;
 
-export const Header = styled.h2`
+export const Header = styled.h3`
   ${({ theme }) => css`
     margin-top: 0;
     max-width: 700px;
-    margin-bottom: ${theme.baseLineHeight / 2}rem;
+    margin-bottom: ${theme.baseLineHeight / 4}rem;
+    margin-top: ${theme.baseLineHeight / 4}rem;
+
+    .gatsby-image-wrapper {
+      transform: translateY(3px);
+    }
   `}
 `;
 

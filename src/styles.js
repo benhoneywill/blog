@@ -16,7 +16,7 @@ export const appTheme = {
 
   colors: {
     light: {
-      backgroundColor: "#fefefe",
+      backgroundColor: "#fcfcfc",
       lightColor: "#f1f1f1",
       textColor: "#333333",
       lightTextColor: "#666666",
@@ -26,8 +26,8 @@ export const appTheme = {
       borderColor: "rgba(0, 0, 0, 0.1)",
       codeBackgroundColor: "#f5f5f5",
       codeForegroundColor: "#A159C7",
-      heroColor: "#f3f3f3",
-      toggleColor: "#f9f9f9",
+      heroColor: "#f1f1f1",
+      toggleColor: "#ffffff",
       toggleSliderColor: "#c7c7c7",
       shadowColor: "rgba(0, 0, 0, 0.3)"
     },
