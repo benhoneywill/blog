@@ -1,6 +1,6 @@
 ---
 title: Building a Range Slider Component in React
-date: 2020-06-30
+date: 2021-08-12
 tagline: Let's make a custom range input component with React.
 image: ./range-slider.png
 published: false
@@ -12,12 +12,17 @@ tags:
 import Container from "./components/container.js";
 import RangeSlider from "./components/range-slider.js";
 
+import Model from "./components/model.js";
+
 HTML inputs can have a type of `"range"`, but these native range inputs have some limitations. The most obvious
 limitation is that these range sliders do not support multiple handles!
 
 Today we are going to build a multi-handled range input in React, and we are going to do it by leveraging the existing
-functionality of the native range input. This means that we won't have to worry about writing our own drag and drop
-system, and we won't have to include a 3rd party drag and drop npm package.
+functionality of the **native range input**.
+
+This means that we won't have to worry about writing our own drag and drop system, and we won't
+have to include a 3rd party drag and drop npm package. We can also rely on native browser behaviour for
+some of the acessibility concerns you would normally have when building something like this.
 
 ###### Here is a native range input
 
@@ -31,4 +36,17 @@ system, and we won't have to include a 3rd party drag and drop npm package.
   <RangeSlider min={0} max={100} step={5} />
 </Container>
 
-## Let's get started!
+### Let's get started!
+
+A multi-range input is essentially just two range inputs:
+
+- One input that represents the min value
+- One input that represents the max value
+- The min value must never be higher than the max value
+- And the max value can never be lower than the min value
+
+Sound simple? Well, with that in mind, check out the example below.
+
+<Container>
+  <Model min={0} max={100} step={5} />
+</Container>
