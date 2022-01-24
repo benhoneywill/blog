@@ -1,23 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
-export const ImageWrapper = styled.div`
-  ${({ theme }) => css`
-    width: ${theme.baseLineHeight * 4}rem;
-    height: ${theme.baseLineHeight * 4}rem;
-    flex-shrink: 0;
-    margin-bottom: ${theme.baseLineHeight / 2}rem;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid ${theme.borderColor};
-
-    .gatsby-image-wrapper {
-      width: ${theme.baseLineHeight * 4}rem !important;
-      height: ${theme.baseLineHeight * 4}rem !important;
-    }
-  `}
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   margin: auto;
@@ -26,11 +9,11 @@ export const Wrapper = styled.div`
   text-align: center;
 `;
 
-export const Header = styled.h3`
+export const Header = styled.h4`
   ${({ theme }) => css`
     margin-top: 0;
     max-width: 700px;
-    margin-bottom: ${theme.baseLineHeight / 4}rem;
+    margin-bottom: ${theme.baseLineHeight / 2}rem;
     margin-top: ${theme.baseLineHeight / 4}rem;
 
     .gatsby-image-wrapper {

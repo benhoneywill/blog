@@ -1,18 +1,10 @@
 import { graphql, useStaticQuery } from "gatsby";
 
 const emojiMap = {
-  "⚛️": "atom",
-  "📖": "book",
   "💥": "explode",
-  "❤️": "heart",
-  "🤘": "metal",
   "🌙": "moon",
-  "📦": "package",
-  "🎨": "palette",
-  "💜": "purple-heart",
   "💬": "speech-balloon",
-  "☀️": "sun",
-  "👋": "wave"
+  "☀️": "sun"
 };
 
 const getEmojiImgFromQueryData = (emoji, data) => {

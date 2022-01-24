@@ -2,16 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
-// Helpers
-import { getTagEmoji } from "../components/tags/tags.helpers";
-
 // Components
 import Posts from "../components/posts";
 import Container from "../components/container";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
 import SectionHeading from "../components/section-heading";
-import Emoji from "../components/emoji";
 
 const TagTemplate = ({ data, pageContext, location }) => {
   return (
@@ -20,17 +16,7 @@ const TagTemplate = ({ data, pageContext, location }) => {
       description={`I am Ben Honeywill, a UK based Front-End Engineer. Read my ${pageContext.slug} articles here.`}
       location={location}
     >
-      <Hero
-        title={
-          <>
-            <Emoji
-              emoji={getTagEmoji(pageContext.slug)}
-              label={pageContext.slug}
-            />{" "}
-            {pageContext.slug}
-          </>
-        }
-      />
+      <Hero title={pageContext.slug} />
 
       <Container maxWidth="1250px">
         <SectionHeading>{pageContext.slug} Posts </SectionHeading>

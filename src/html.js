@@ -63,6 +63,7 @@ const HTML = ({
           }}
         />
         {postBodyComponents}
+        <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js" />
       </body>
     </html>
   );

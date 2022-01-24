@@ -85,8 +85,8 @@ const Rail = styled.div`
   transform: translateY(-50%);
   height: 6px;
   border-radius: 3px;
-  background: ${({ theme }) => theme.lightColor};
-  background: var(--lightColor);
+  background: ${({ theme }) => theme.backgroundColor};
+  background: var(--backgroundColor);
 `;
 
 const InnerRail = styled.div`
@@ -174,11 +174,11 @@ const RangeSlider = ({ min, max, value, step, onChange, formatLabel }) => {
       </AbsoluteWrapper>
 
       <AbsoluteWrapper control>
-        <Control type="min" pos={minPos} label={formatLabel(minValue)} />
+        <Control pos={minPos} label={formatLabel(minValue)} />
         <Rail>
           <InnerRail left={minPos} right={maxPos} />
         </Rail>
-        <Control type="max" pos={maxPos} label={formatLabel(maxValue)} />
+        <Control pos={maxPos} label={formatLabel(maxValue)} />
       </AbsoluteWrapper>
     </Wrapper>
   );

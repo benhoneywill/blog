@@ -1,9 +1,9 @@
 ---
 title: Building a Range Slider Component in React
-date: 2021-08-12
+date: 2022-01-24
 tagline: Let's make a custom range input component with React.
 image: ./range-slider.png
-published: false
+published: true
 tags:
   - React
   - JavaScript
@@ -11,26 +11,21 @@ tags:
 
 import Container from "./components/container.js";
 import RangeSlider from "./components/range-slider.js";
+import SliderCodepenEmbed from "./components/codepen.js";
 
 import Model from "./components/model.js";
 
 HTML inputs can have a type of `"range"`, but these native range inputs have some limitations. The most obvious
-limitation is that these range sliders do not support multiple handles!
+limitation is that these range sliders do not support multiple handles.
 
 Today we are going to build a multi-handled range input in React, and we are going to do it by leveraging the existing
 functionality of the **native range input**.
 
 This means that we won't have to worry about writing our own drag and drop system, and we won't
 have to include a 3rd party drag and drop npm package. We can also rely on native browser behaviour for
-some of the acessibility concerns you would normally have when building something like this.
+most of the acessibility concerns you would normally have when building a component like this.
 
-###### Here is a native range input
-
-<Container>
-  <input type="range" min={0} max={100} step={5} />
-</Container>
-
-###### And here is what we will learn to build today
+##### Here is what we will learn to build today
 
 <Container>
   <RangeSlider min={0} max={100} step={5} />
@@ -38,7 +33,8 @@ some of the acessibility concerns you would normally have when building somethin
 
 ### Let's get started!
 
-A multi-range input is essentially just two range inputs:
+First we need to think about how we are going to model the state of our range input.
+Well, a multi-range input is essentially just two range inputs:
 
 - One input that represents the min value
 - One input that represents the max value
@@ -50,3 +46,98 @@ Sound simple? Well, with that in mind, check out the example below.
 <Container>
   <Model min={0} max={100} step={5} />
 </Container>
+
+This simple example implements the bullet points above, try to move the min value past the max one
+and you will see that you can't.
+
+This idea forms the basis of the entire component, and can be implemented quite easily.
+
+```js
+const RangeSlider = ({ step, min, max }) => {
+  const [minValue, setMinValue] = React.useState(min);
+  const [maxValue, setMaxValue] = React.useState(max);
+
+  const handleMinChange = event => {
+    event.preventDefault();
+    const value = parseFloat(e.target.value);
+    // the new min value is the value from the event.
+    // it should not exceed the current max value!
+    const newMinVal = Math.min(value, maxValue - step);
+    setMinValue(newMinVal);
+  };
+
+  const handleMaxChange = event => {
+    event.preventDefault();
+    const value = parseFloat(e.target.value);
+    // the new max value is the value from the event.
+    // it must not be less than the current min value!
+    const newMaxVal = Math.max(value, minValue + step);
+    setMaxValue(newMaxVal);
+  };
+
+  return (
+    <div>
+      <input
+        type="range"
+        value={minValue}
+        min={min}
+        max={max}
+        step={step}
+        onChange={handleMinChange}
+      />
+      <input
+        type="range"
+        value={maxValue}
+        min={min}
+        max={max}
+        step={step}
+        onChange={handleMaxChange}
+      />
+    </div>
+  );
+};
+```
+
+### Styling the slider
+
+Although it may not seem like it, at this point you are 80% of the way there. All we need to wrap things
+up is a little bit of CSS magic.
+
+What we want to do is position the 2 sliders over one another, hide the native UI elements with `opacity`, and then position
+our own UI elements in the correct position underneath the hidden native elements.
+
+The native elements will have a z-index above our own UI elements, so even though they are
+invisible, the user will still be able to grab and drag them just like normal.
+
+The tricky bit here is positioning your slider controls correctly, but this can be acheived
+with a little bit of maths:
+
+```js
+const minPos = ((minValue - min) / (max - min)) * 100;
+const maxPos = ((maxValue - min) / (max - min)) * 100;
+```
+
+These values give you the position of each range handle as a percentage of the width of the element.
+This allows you to absolutely position your UI elements based on the current state of the range sliders.
+The JSX for your custom slider UI might look something like this:
+
+```js
+<div class="control-wrapper">
+  <div class="control" style={{ left: `${minPos}%` }} />
+  <div class="rail">
+    <div
+      class="inner-rail"
+      style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
+    />
+  </div>
+  <div class="control" style={{ left: `${maxPos}%` }} />
+</div>
+```
+
+You will need to add some of your own custom styles to complete the component, but instead
+of recreating that CSS in this blog post I have created a codepen
+which demonstrates a completed range slider using this technique.
+
+[View the codepen here](https://codepen.io/benhoneywill-the-reactor/pen/PojZmow), or check it out below.
+
+<SliderCodepenEmbed />

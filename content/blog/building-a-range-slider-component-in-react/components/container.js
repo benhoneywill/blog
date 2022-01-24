@@ -3,13 +3,15 @@ import { css } from "@emotion/core";
 
 const Container = styled.div`
   ${({ theme }) => css`
-    height: ${theme.baseLineHeight * 2.5}rem;
-    margin-bottom: ${theme.baseLineHeight * 2.5}rem;
+    height: ${theme.baseLineHeight * 3}rem;
+    padding: ${theme.baseLineHeight * 0.5}rem;
+    margin: ${theme.baseLineHeight * 1.5}rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 450px;
-    margin: 0 auto;
+    background-color: ${theme.lightColor};
+    background: var(--lightColor);
+    border-radius: 5px;
   `}
 `;
 
