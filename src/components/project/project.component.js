@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { useTheme } from "../../contexts/theme";
 import GithubIcon from "../../icons/github.svg";
+import LinkIcon from "../../icons/link.svg";
 
 // Styles
 import {
@@ -34,9 +35,24 @@ const Project = ({ project }) => {
         </ProjectTitle>
 
         <ProjectActions>
-          <a href={project.frontmatter.github} rel="noreferrer" target="_blank">
-            <GithubIcon fill={darkMode ? "#FFFFFF" : "#111111"} />
+          <a
+            href={project.frontmatter.link}
+            rel="noreferrer"
+            target="_blank"
+            title="Go to project"
+          >
+            <LinkIcon fill={darkMode ? "#FFFFFF" : "#111111"} />
           </a>
+          {project.frontmatter.github && (
+            <a
+              href={project.frontmatter.github}
+              rel="noreferrer"
+              target="_blank"
+              title="Go to github repo"
+            >
+              <GithubIcon fill={darkMode ? "#FFFFFF" : "#111111"} />
+            </a>
+          )}
         </ProjectActions>
 
         <Description>{project.frontmatter.description}</Description>

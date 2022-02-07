@@ -55,6 +55,7 @@ export const ProjectActions = styled.div`
       align-items: center;
       transition: opacity 0.1s ease-in-out;
       margin-right: 0.5rem;
+      opacity: 0.7;
     }
 
     svg {
@@ -63,7 +64,7 @@ export const ProjectActions = styled.div`
     }
 
     a:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
   `}
 `;

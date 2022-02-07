@@ -65,7 +65,10 @@ export const homeQuery = graphql`
       }
     }
 
-    projects: allMdx(filter: { fields: { source: { eq: "projects" } } }) {
+    projects: allMdx(
+      filter: { fields: { source: { eq: "projects" } } }
+      sort: { fields: [frontmatter___order], order: ASC }
+    ) {
       edges {
         node {
           id
