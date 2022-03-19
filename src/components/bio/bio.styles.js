@@ -9,6 +9,22 @@ export const Wrapper = styled.div`
   text-align: center;
 `;
 
+export const ImageWrapper = styled.div`
+  ${({ theme }) => css`
+    width: ${theme.baseLineHeight * 4}rem;
+    height: ${theme.baseLineHeight * 4}rem;
+    flex-shrink: 0;
+    margin-bottom: ${theme.baseLineHeight / 2}rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid ${theme.borderColor};
+    .gatsby-image-wrapper {
+      width: ${theme.baseLineHeight * 4}rem !important;
+      height: ${theme.baseLineHeight * 4}rem !important;
+    }
+  `}
+`;
+
 export const Header = styled.h4`
   ${({ theme }) => css`
     margin-top: 0;

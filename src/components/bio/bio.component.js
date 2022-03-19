@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "gatsby";
+import Image from "gatsby-image";
 
 // Icons
 import TwitterIcon from "../../icons/twitter.svg";
@@ -15,15 +17,22 @@ import {
   Text,
   SocialIcons,
   SocialIconItem,
-  SocialIconLink
+  SocialIconLink,
+  ImageWrapper
 } from "./bio.styles";
 
 const Bio = () => {
-  const { site } = useBioQuery();
-  const { social } = site.siteMetadata;
+  const { avatar, site } = useBioQuery();
+  const { author, social } = site.siteMetadata;
 
   return (
     <Wrapper>
+      <ImageWrapper>
+        <Link href="/">
+          <Image fixed={avatar.childImageSharp.fixed} alt={author} />
+        </Link>
+      </ImageWrapper>
+
       <Header>Hi, I&#39;m Ben.</Header>
 
       <Text>
