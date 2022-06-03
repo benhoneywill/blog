@@ -24,7 +24,7 @@
     "gatsby-image": "^2.9.0",
     "gatsby-plugin-canonical-urls": "^2.8.0",
     "gatsby-plugin-manifest": "^2.10.0",
-    "gatsby-plugin-mdx": "^1.8.0",
+    "gatsby-plugin-mdx": "^2.14.1",
     "gatsby-plugin-mdx-source-name": "^1.0.1",
     "gatsby-plugin-offline": "^2.0.5",
     "gatsby-plugin-react-helmet": "^3.8.0",
