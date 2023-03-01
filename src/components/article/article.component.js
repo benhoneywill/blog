@@ -43,7 +43,7 @@ const Article = ({ post }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const tweetMsg = `${post.frontmatter.title}\n\n${post.frontmatter.tagline}\n\nBy @benhoneywill\n\n${siteUrl}${post.fields.slug}`;
+  const tweetMsg = `I just read this great article\n\n${post.frontmatter.title}\nBy @benhoneywill\n\n${siteUrl}${post.fields.slug}`;
   const tweetUrl = `https://twitter.com/intent/tweet?text=${escape(tweetMsg)}`;
 
   return (
@@ -78,25 +78,7 @@ const Article = ({ post }) => {
             <MDXRenderer>{post.body}</MDXRenderer>
           </MarkdownWrapper>
 
-          <Tags align="center" tags={post.frontmatter.tags} />
-
-          <CenteredParagraph>
-            <TwitterIcon
-              fill="#00acee"
-              height="1em"
-              width="1em"
-              style={{ transform: "translateY(0.1em)", marginRight: "0.3em" }}
-            />
-            <a
-              rel="noreferrer"
-              target="_blank"
-              href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
-                `${siteUrl}${post.fields.slug}`
-              )}`}
-            >
-              Discuss this article on Twitter
-            </a>
-          </CenteredParagraph>
+          <Tags tags={post.frontmatter.tags} />
 
           <Comments title={post.frontmatter.title} />
         </Container>

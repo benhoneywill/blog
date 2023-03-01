@@ -23,7 +23,7 @@ export const PublishedAt = styled.p`
 
 export const MarkdownWrapper = styled.div`
   ${({ theme }) => css`
-    margin-bottom: ${theme.baseLineHeight * 2}rem;
+    margin-bottom: ${theme.baseLineHeight * 1.5}rem;
   `}
 `;
 

@@ -29,7 +29,8 @@ export const appTheme = {
       heroColor: "#f1f1f1",
       toggleColor: "#ffffff",
       toggleSliderColor: "#c7c7c7",
-      shadowColor: "rgba(0, 0, 0, 0.3)"
+      shadowColor: "rgba(0, 0, 0, 0.3)",
+      linkedinColor: "#0072bb"
     },
 
     dark: {
@@ -46,7 +47,8 @@ export const appTheme = {
       heroColor: "#151515",
       toggleColor: "#000000",
       toggleSliderColor: "#333333",
-      shadowColor: "rgba(0, 0, 255, 0.2)"
+      shadowColor: "rgba(0, 0, 255, 0.2)",
+      linkedinColor: "#00A0DC"
     }
   }
 };

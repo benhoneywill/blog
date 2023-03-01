@@ -6,20 +6,13 @@ import { graphql } from "gatsby";
 import Container from "../components/container";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
-import Emoji from "../components/emoji";
 import SectionHeading from "../components/section-heading";
 import Posts from "../components/posts";
 
 const NotFound = ({ location, data }) => {
   return (
     <Layout title="404 Not Found" location={location}>
-      <Hero
-        title={
-          <>
-            <Emoji emoji="💥" label="Explode" /> 404 Not Found
-          </>
-        }
-      />
+      <Hero title="404 Not Found" />
       <Container maxWidth="1250px">
         <SectionHeading>Looking for a blog post?</SectionHeading>
         <Posts posts={data.posts.edges} />

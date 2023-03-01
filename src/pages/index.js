@@ -4,19 +4,19 @@ import { graphql } from "gatsby";
 
 // Components
 import Container from "../components/container";
-import Bio from "../components/bio";
 import Posts from "../components/posts";
 import Projects from "../components/projects";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
 import SectionHeading from "../components/section-heading";
 import Tags from "../components/tags";
+import HomeHeroContent from "../components/home-hero-content";
 
 const Home = ({ data, location }) => {
   return (
     <Layout title="Home" location={location}>
       <Hero>
-        <Bio />
+        <HomeHeroContent />
       </Hero>
 
       <Container maxWidth="1250px">

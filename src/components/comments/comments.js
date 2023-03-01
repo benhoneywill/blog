@@ -1,13 +1,11 @@
 import React from "react";
 
 import { useTheme } from "../../contexts/theme";
-import Emoji from "../emoji";
 import {
   CommentsContainer,
   LoadingText,
   CommentsWrapper,
-  Heading,
-  HeadingTitle
+  Heading
 } from "./comments.styles";
 
 const Comments = () => {
@@ -51,10 +49,7 @@ const Comments = () => {
 
   return (
     <CommentsContainer>
-      <Heading>
-        <Emoji emoji="💬" label="Comment" />
-        <HeadingTitle>Comment with GitHub</HeadingTitle>
-      </Heading>
+      <Heading>Comment with GitHub</Heading>
       {loading && <LoadingText>Loading comments...</LoadingText>}
       <CommentsWrapper ref={ref} />
     </CommentsContainer>

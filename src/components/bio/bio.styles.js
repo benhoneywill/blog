@@ -11,25 +11,25 @@ export const Wrapper = styled.div`
 
 export const ImageWrapper = styled.div`
   ${({ theme }) => css`
-    width: ${theme.baseLineHeight * 4}rem;
-    height: ${theme.baseLineHeight * 4}rem;
+    width: ${theme.baseLineHeight * 3}rem;
+    height: ${theme.baseLineHeight * 3}rem;
     flex-shrink: 0;
     margin-bottom: ${theme.baseLineHeight / 2}rem;
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid ${theme.borderColor};
     .gatsby-image-wrapper {
-      width: ${theme.baseLineHeight * 4}rem !important;
-      height: ${theme.baseLineHeight * 4}rem !important;
+      width: ${theme.baseLineHeight * 3}rem !important;
+      height: ${theme.baseLineHeight * 3}rem !important;
     }
   `}
 `;
 
-export const Header = styled.h4`
+export const Header = styled.h5`
   ${({ theme }) => css`
     margin-top: 0;
-    max-width: 700px;
-    margin-bottom: ${theme.baseLineHeight / 2}rem;
+    max-width: 600px;
+    margin-bottom: ${theme.baseLineHeight / 4}rem;
     margin-top: ${theme.baseLineHeight / 4}rem;
 
     .gatsby-image-wrapper {
@@ -41,7 +41,7 @@ export const Header = styled.h4`
 export const Text = styled.p`
   ${({ theme }) => css`
     margin-top: 0;
-    max-width: 550px;
+    max-width: 500px;
     margin-bottom: ${theme.baseLineHeight / 2}rem;
   `}
 `;

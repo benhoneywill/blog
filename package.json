@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Ben Honeywill",
   "resolutions": {
-    "sharp": "0.24.0"
+    "sharp": "0.28.0"
   },
   "scripts": {
     "start": "gatsby develop",
