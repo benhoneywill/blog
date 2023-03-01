@@ -12,7 +12,7 @@ export const useSeoQuery = () => {
         }
       }
 
-      defaultImage: file(absolutePath: { regex: "/default-social.png/" }) {
+      defaultImage: file(absolutePath: { regex: "/default-social.jpg/" }) {
         childImageSharp {
           fixed(width: 1000) {
             ...GatsbyImageSharpFixed

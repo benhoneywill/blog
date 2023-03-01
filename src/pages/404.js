@@ -12,7 +12,7 @@ import Posts from "../components/posts";
 const NotFound = ({ location, data }) => {
   return (
     <Layout title="404 Not Found" location={location}>
-      <Hero title="404 Not Found" />
+      <Hero title="Page not found" />
       <Container maxWidth="1250px">
         <SectionHeading>Looking for a blog post?</SectionHeading>
         <Posts posts={data.posts.edges} />
