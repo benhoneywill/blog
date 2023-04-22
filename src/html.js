@@ -64,11 +64,6 @@ const HTML = ({
         />
         {postBodyComponents}
         <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js" />
-        <script
-          async
-          defer
-          src="https://scripts.simpleanalyticscdn.com/latest.js"
-        />
       </body>
     </html>
   );
